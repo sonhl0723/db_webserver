@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     $('.login-info-box').fadeOut();
     $('.login-show').addClass('show-log-panel');
@@ -6,6 +7,7 @@ $(document).ready(function(){
 
 $('.login-reg-panel input[type="radio"]').on('change', function() {
     if($('#log-login-show').is(':checked')) {
+        console.log("login comecom")
         $('.register-info-box').fadeOut();
         $('.login-info-box').fadeIn();
 
@@ -15,6 +17,7 @@ $('.login-reg-panel input[type="radio"]').on('change', function() {
 
     }
     else if($('#log-reg-show').is(':checked')) {
+        console.log("register comecom")
         $('.register-info-box').fadeIn();
         $('.login-info-box').fadeOut();
 
@@ -24,3 +27,4 @@ $('.login-reg-panel input[type="radio"]').on('change', function() {
         $('.register-show').removeClass('show-log-panel');
     }
 });
+

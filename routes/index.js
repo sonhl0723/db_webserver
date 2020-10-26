@@ -8,5 +8,14 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('../views/luxe/login', { title: 'Login' });
 });
+router.get('/services', function(req, res, next) {
+  res.render('../views/luxe/services', { title: 'Services' });
+});
+router.get('/blog', function(req, res, next) {
+  res.render('../views/luxe/blog', { title: 'Blog' });
+});
+router.get('/contract', function(req, res, next) {
+  res.render('../views/luxe/contract', { title: 'Contract' });
+});
 
 module.exports = router;

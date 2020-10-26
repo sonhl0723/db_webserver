@@ -17,5 +17,8 @@ router.get('/blog', function(req, res, next) {
 router.get('/contract', function(req, res, next) {
   res.render('../views/luxe/contract', { title: 'Contract' });
 });
+router.get('/hotel', function(req, res, next) {
+  res.render('../views/luxe/hotel', { title: 'Hotel' });
+});
 
 module.exports = router;

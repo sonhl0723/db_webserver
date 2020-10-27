@@ -3,6 +3,7 @@
 
 
 ### https://dbprojectourhotel.herokuapp.com/  heroku 연동한 링크입니다. 현재는 sochubert/db_webserver 의 develop branch와 연동되어 있는데, 나중에 권한 생기면 바꾸도록 하겠습니다~
+#### https://jayprogram.tistory.com/37  //권한 바꾸는거 참고.
 
 ### DB서버 추가 하였습니다. 저희 DB접속 방법은
 #### 1. mysql -h us-cdbr-east-02.cleardb.com -u b533707a3ce3ab -p

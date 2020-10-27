@@ -6,4 +6,4 @@
 #### git branch -r
 #### git checkout -t origin/testbranch
 
-
+###https://dbprojectourhotel.herokuapp.com/  heroku 연동한 링크입니다.

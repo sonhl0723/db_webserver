@@ -6,4 +6,4 @@
 #### git branch -r
 #### git checkout -t origin/testbranch
 
-###https://dbprojectourhotel.herokuapp.com/  heroku 연동한 링크입니다. 현재는 sochubert/db_webserver 의 develop branch와 연동되어 있는데, 나중에 권한 생기면 바꾸도록 하겠습니다~
+### https://dbprojectourhotel.herokuapp.com/  heroku 연동한 링크입니다. 현재는 sochubert/db_webserver 의 develop branch와 연동되어 있는데, 나중에 권한 생기면 바꾸도록 하겠습니다~

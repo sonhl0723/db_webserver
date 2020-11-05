@@ -120,7 +120,7 @@
                                         <p><span>손홍일</span></p>
                                         <h2>우주는 손홍일을 중심으로 돈다..</h2>
                                         <p>
-                                            <a href="#" class="btn btn-primary btn-lg">Book Now</a>
+                                            <a href="#" class="btn btn-primary btn-lg" onClick="location.href='/booking'">Book Now</a>
                                         </p>
                                     </div>
                                 </div>
@@ -136,7 +136,7 @@
                                         <p><span>손홍일</span></p>
                                         <h2>사랑해</h2>
                                         <p>
-                                            <a href="#" class="btn btn-primary btn-lg">Book Now</a>
+                                            <a href="#" class="btn btn-primary btn-lg" onClick="location.href='/booking'">Book Now</a>
                                         </p>
                                     </div>
                                 </div>
@@ -168,7 +168,6 @@
                 <div class="row">
                     <div id="availability">
                         <form action="#">
-
                             <div class="a-col">
                                 <section>
                                     <select class="cs-select cs-skin-border">
@@ -189,6 +188,40 @@
                                 <div class="input-field">
                                     <label for="date-end">Check Out</label>
                                     <input type="text" class="form-control" id="date-end" />
+                                </div>
+                            </div>
+                            <div class="a-col alternate_0">
+                                <div class="input-field">
+                                    <label for="room-num">Room</label>
+                                    <select id="room-number" name="room-num-name">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="a-col alternate_0">
+                                <div class="input-field">
+                                    <label for="adult-num">Adult</label>
+                                    <select id="adult-number" name="adult-num-name">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="a-col alternate_0">
+                                <div class="input-field">
+                                    <label for="child-num">Child</label>
+                                    <select id="child-number" name="child-num-name">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="a-col action">
@@ -247,7 +280,7 @@
                         <div class="desc">
                             <h3>Deluxe Hotel</h3>
                             <p>낭만적인 바다와 바람, 그리고 두개의 태양과 함게하는 바닷가 호텔은 어떠신가요?<br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-                            <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+                            <p><a href="#" class="btn btn-primary btn-lg" onClick="location.href='/booking'">Book Now<i class="ti-angle-right"></i></a></p>
                         </div>
                     </div>
 
@@ -261,7 +294,7 @@
                             <div class="desc">
                                 <h3>Hotel Bora</h3>
                                 <p>방을 예약하시면 그의 미소 한방을 서비스로 드립니다.<br>The smile of the God<br><br><br><br><br><br></p>
-                                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+                                <p><a href="#" class="btn btn-primary btn-lg" onClick="location.href='/booking'">Book Now <i class="ti-angle-right"></i></a></p>
                             </div>
                         </div>
                         <div class="f-hotel">
@@ -273,7 +306,7 @@
                             <div class="desc">
                                 <h3>D’Morvie</h3>
                                 <p>더 가까이서 볼 수 있다면?</p>
-                                <p><a href="#" class="btn btn-primary btn-luxe-primary">Book Now <i class="ti-angle-right"></i></a></p>
+                                <p><a href="#" class="btn btn-primary btn-lg" onClick="location.href='/booking'">Book Now<i class="ti-angle-right"></i></a></p>
                             </div>
                         </div>
                     </div>

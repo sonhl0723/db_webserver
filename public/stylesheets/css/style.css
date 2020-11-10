@@ -8104,6 +8104,9 @@ div.cs-select span {
 #availability .a-col.alternate {
   width: 30%;
 }
+#availability .a-col.alternate_0 {
+  width: 10%;
+}
 @media screen and (max-width: 829px) {
   #availability .a-col.alternate {
     width: 50% !important;

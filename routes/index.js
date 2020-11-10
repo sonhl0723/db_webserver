@@ -5,9 +5,9 @@ var mysql      = require('mysql');
 
 var db_config = {
   host     : 'us-cdbr-east-02.cleardb.com',
-  user     : 'b533707a3ce3ab',
-  password : '204d04b4',
-  database : 'heroku_f30c74be296965b'
+  user     : 'b0d7db5a46255f',
+  password : 'e0ba2ce1',
+  database : 'heroku_a9f9515c41ce864'
 };
 
 var connection;

@@ -7,6 +7,6 @@
 ----------
 ### DB서버 추가 하였습니다. 저희 DB접속 방법은
 ##### 시작 전, npm install mysql --save로 mysql을 설치 해 주세요.
-#### 1. mysql -h us-cdbr-east-02.cleardb.com -u b533707a3ce3ab -p
-#### 2. 204d04b4   (password입력)
-#### 3. 정상적으로 접속 됐으면 USE heroku_f30c74be296965b; (우리가 쓸 db)
+#### 1. mysql -h us-cdbr-east-02.cleardb.com -u b0d7db5a46255f -p
+#### 2. e0ba2ce1   (password입력)
+#### 3. 정상적으로 접속 됐으면 USE heroku_a9f9515c41ce864; (우리가 쓸 db)

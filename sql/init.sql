@@ -2,19 +2,28 @@
 
 -- ADDRESS Table Create SQL
 
-drop table employee;
-drop table reservation;
+drop table stock_manage;
+drop table stock;
 drop table room_amenity;
+drop table ep_attendance;
+drop table notice;
+drop table complain;
+drop table employee;
+drop table department;
+drop table detail_fee;
+drop table review;
+drop table valet_parking;
+drop table res_fac;
+drop table reservation;
 drop table card;
+drop table facility_package;
 drop table room_type;
 drop table room;
-drop table stock;
+drop table qna;
 drop table customer;
-drop table department;
-drop table facility_package;
 drop table person;
 drop table address;
-
+drop table date_sales;
 
 
 CREATE TABLE ADDRESS

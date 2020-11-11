@@ -2,19 +2,28 @@
 
 -- ADDRESS Table Create SQL
 
-drop table employee;
-drop table reservation;
-drop table room_amenity;
-drop table card;
-drop table room_type;
-drop table room;
+drop table stock_manage;
 drop table stock;
-drop table customer;
+drop table room_amenity;
+drop table ep_attendance;
+drop table notice;
+drop table complain;
+drop table employee;
 drop table department;
+drop table detail_fee;
+drop table review;
+drop table valet_parking;
+drop table res_fac;
+drop table reservation;
+drop table card;
 drop table facility_package;
+drop table room;
+drop table room_type;
+drop table qna;
+drop table customer;
 drop table person;
 drop table address;
-
+drop table date_sales;
 
 
 CREATE TABLE ADDRESS
@@ -30,22 +39,6 @@ CREATE TABLE ADDRESS
 );
 
 
-
--- ADDRESS Table Create SQL
-CREATE TABLE ROOM
-(
-    `NUM`    INT     NOT NULL    COMMENT '객실번호', 
-    `STATE`  ENUM('AVAILABLE', 'CANNOT_USE','CHECKOUT_DAY','STAYING')    NOT NULL    DEFAULT 'AVAILABLE' COMMENT '객실상태', -- enum값 설정
-    `TYPE`              ENUM('STANDARD_TWIN','STANDARD_DOUBLE','STANDARD_FAMILY',
-								'DELUXE_TWIN','DELUXE_DOUBLE','DELUXE_FAMILY',
-								'PREMIUM_TWIN','PREMIUM_DOUBLE',
-								'SUITE','EXECUTIVE_SUITE'),
-    PRIMARY KEY (NUM)
-);
-
-ALTER TABLE ROOM
-    ADD CONSTRAINT FK_ROOM_TYPE_ROOM_TYPE_TYPE FOREIGN KEY (TYPE)
-        REFERENCES ROOM_TYPE (TYPE) ON DELETE CASCADE ON UPDATE CASCADE;
 
 
 -- ADDRESS Table Create SQL
@@ -103,6 +96,21 @@ CREATE TABLE ROOM_TYPE
     PRIMARY KEY (TYPE)
 );
 
+-- ADDRESS Table Create SQL
+CREATE TABLE ROOM
+(
+    `NUM`    INT     NOT NULL    COMMENT '객실번호', 
+    `STATE`  ENUM('AVAILABLE', 'CANNOT_USE','CHECKOUT_DAY','STAYING')    NOT NULL    DEFAULT 'AVAILABLE' COMMENT '객실상태', -- enum값 설정
+    `TYPE`   ENUM('STANDARD_TWIN','STANDARD_DOUBLE','STANDARD_FAMILY',
+								'DELUXE_TWIN','DELUXE_DOUBLE','DELUXE_FAMILY',
+								'PREMIUM_TWIN','PREMIUM_DOUBLE',
+								'SUITE','EXECUTIVE_SUITE'),          
+    PRIMARY KEY (NUM)
+);
+
+ALTER TABLE ROOM
+    ADD CONSTRAINT FK_ROOM_TYPE_ROOM_TYPE_TYPE FOREIGN KEY (TYPE)
+        REFERENCES ROOM_TYPE (TYPE) ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ADDRESS Table Create SQL
 CREATE TABLE DEPARTMENT

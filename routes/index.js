@@ -5,9 +5,9 @@ var mysql      = require('mysql');
 
 var db_config = {
   host     : 'us-cdbr-east-02.cleardb.com',
-  user     : 'b533707a3ce3ab',
-  password : '204d04b4',
-  database : 'heroku_f30c74be296965b'
+  user     : 'b0d7db5a46255f',
+  password : 'e0ba2ce1',
+  database : 'heroku_a9f9515c41ce864'
 };
 
 var connection;
@@ -36,26 +36,41 @@ function handleDisconnect() {
 handleDisconnect();
 
 /* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('../views/luxe/index', { title: 'Home' });
+// });
+// router.get('/login', function(req, res, next) {
+//   res.render('../views/luxe/login', { title: 'Login' });
+// });
+// router.get('/services', function(req, res, next) {
+//   res.render('../views/luxe/services', { title: 'Services' });
+// });
+// router.get('/blog', function(req, res, next) {
+//   res.render('../views/luxe/blog', { title: 'Blog' });
+// });
+// router.get('/contract', function(req, res, next) {
+//   res.render('../views/luxe/contract', { title: 'Contract' });
+// });
+// router.get('/hotel', function(req, res, next) {
+//   res.render('../views/luxe/hotel', { title: 'Hotel' });
+// });
+// router.get('/booking', function(req, res, next) {
+//   res.render('../views/luxe/booking', { title: 'Booking' });
+// });
+
+
+// chanwoong routing
 router.get('/', function(req, res, next) {
-  res.render('../views/luxe/index', { title: 'Home' });
+  res.render('../views/chanwoong/index', { title: 'Home' });
 });
 router.get('/login', function(req, res, next) {
-  res.render('../views/luxe/login', { title: 'Login' });
+  res.render('../views/chanwoong/login', { title: 'Login' });
 });
-router.get('/services', function(req, res, next) {
-  res.render('../views/luxe/services', { title: 'Services' });
+router.get('/reservation', function(req, res, next) {
+  res.render('../views/chanwoong/reservation', { title: 'Reservation' });
 });
-router.get('/blog', function(req, res, next) {
-  res.render('../views/luxe/blog', { title: 'Blog' });
-});
-router.get('/contract', function(req, res, next) {
-  res.render('../views/luxe/contract', { title: 'Contract' });
-});
-router.get('/hotel', function(req, res, next) {
-  res.render('../views/luxe/hotel', { title: 'Hotel' });
-});
-router.get('/booking', function(req, res, next) {
-  res.render('../views/luxe/booking', { title: 'Booking' });
+router.get('/room', function(req, res, next) {
+  res.render('../views/chanwoong/room', { title: 'Room' });
 });
 
 

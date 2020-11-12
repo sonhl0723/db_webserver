@@ -1,0 +1,35 @@
+<!-- START: header -->
+
+<header role="banner" class="probootstrap-header">
+    <!-- <div class="container"> -->
+    <div class="row">
+        <a href="/" class="probootstrap-logo visible-xs"><img src="img/logo_sm.png" class="hires" width="120" height="33" alt="Free Bootstrap Template by uicookies.com"></a>
+
+        <a href="#" class="probootstrap-burger-menu visible-xs"><i>Menu</i></a>
+        <div class="mobile-menu-overlay"></div>
+
+        <nav role="navigation" class="probootstrap-nav hidden-xs">
+            <ul class="probootstrap-main-nav">
+<!--                title의 값을 받아와서 사용자가 어디위치에 있는지 표시해주는 기능-->
+                <li <% if (title == 'Home'){ %> class="active" <% }%>><a href="/">Home</a></li>
+                <li <% if (title == 'Login'){ %> class="active" <% }%>><a href="/Login">Login</a></li>
+                <li <% if (title == 'Room'){ %> class="active" <% }%>><a href="/room">Room</a></li>
+                <li class="hidden-xs probootstrap-logo-center"><a href="/"><img src="img/logo_md.png" class="hires" width="181" height="50" alt="Free Bootstrap Template by uicookies.com"></a></li>
+                <li <% if (title == 'Reservation'){ %> class="active" <% }%>><a href="/reservation">Reservation</a></li>
+                <li <% if (title == 'Blog'){ %> class="active" <% }%>><a href="/blog">Blog</a></li>
+                <li <% if (title == 'Contact'){ %> class="active" <% }%>><a href="/contact ">Contact</a></li>
+            </ul>
+            <div class="extra-text visible-xs">
+                <a href="#" class="probootstrap-burger-menu"><i>Menu</i></a>
+                <h5>Connect With Us</h5>
+                <ul class="social-buttons">
+                    <li><a href="#"><i class="icon-twitter"></i></a></li>
+                    <li><a href="#"><i class="icon-facebook2"></i></a></li>
+                    <li><a href="#"><i class="icon-instagram2"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <!-- </div> -->
+</header>
+<!-- END: header -->

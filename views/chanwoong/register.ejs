@@ -4,13 +4,18 @@
 <head>
     <style>
         body{
-            background-image: url("img/slider_1.jpg"); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;
+            background-image: url("img/slider4.jpg"); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 1; display: block; z-index: 2;
         }
     </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/xcode.min.css" />
+
+    <link rel="stylesheet" href="dist/css/bootstrap-select-country.min.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 </head>
 <body>
 <div class="container">
@@ -67,7 +72,9 @@
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Nation</label>
-                            <input type="text" placeholder="Enter Nation Here.." class="form-control">
+                            <div class="example">
+                                <select class="selectpicker countrypicker" data-live-search="true"></select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -105,5 +112,13 @@
     </div>
 </div>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script src="js/bootstrap-select-country.min.js"></script>
 </body>
 </html>

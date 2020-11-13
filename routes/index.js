@@ -61,7 +61,7 @@ handleDisconnect();
 
 // chanwoong routing
 router.get('/', function(req, res, next) {
-  res.render('../views/chanwoong/index', { title: 'Home' , cusname:null});
+  res.render('../views/chanwoong/index', { title: 'Home' , cust_info:null});
 });
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' });
@@ -76,7 +76,7 @@ router.get('/room', function(req, res, next) {
 router.post('/main',function (req,res){
   var userid = req.body.userid;
   var userpwd = req.body.userpwd;
-  connection.query('SELECT login_id,login_pw,ENG_FIRST_NAME FROM customer cross join person WHERE person.id=customer.person_id and login_id = ?',[userid],function (error, result, fields) {
+  connection.query('SELECT customer.ID, login_id,login_pw, ENG_FIRST_NAME FROM customer cross join person WHERE person.id=customer.person_id and login_id = ?',[userid],function (error, result, fields) {
     if (error) {
       console.log(error);
     }
@@ -88,7 +88,7 @@ router.post('/main',function (req,res){
     for (var i = 0; i < result.length; i++) {
       if (result[i].login_pw == userpwd) {
         console.log("로그인 성공");
-        res.render('../views/chanwoong/index', {title: 'Home',cusname:result[i].login_pw});
+        res.render('../views/chanwoong/index', {title: 'Home',cust_info:result[i]});
         break;
       }
       else {

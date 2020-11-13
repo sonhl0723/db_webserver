@@ -61,7 +61,7 @@ handleDisconnect();
 
 // chanwoong routing
 router.get('/', function(req, res, next) {
-  res.render('../views/chanwoong/index', { title: 'Home' });
+  res.render('../views/chanwoong/index', { title: 'Home' , cusname:null});
 });
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' });
@@ -73,7 +73,7 @@ router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' });
 });
 
-router.post('/do_login',function (req,res){
+router.post('/main',function (req,res){
   var userid = req.body.userid;
   var userpwd = req.body.userpwd;
   connection.query('SELECT login_id,login_pw,ENG_FIRST_NAME FROM customer cross join person WHERE person.id=customer.person_id and login_id = ?',[userid],function (error, result, fields) {
@@ -88,15 +88,16 @@ router.post('/do_login',function (req,res){
     for (var i = 0; i < result.length; i++) {
       if (result[i].login_pw == userpwd) {
         console.log("로그인 성공");
-        res.render('../views/chanwoong/index', {title: 'Home',cusname:result[i].eng_first_name});
+        res.render('../views/chanwoong/index', {title: 'Home',cusname:result[i].login_pw});
+        break;
       }
       else {
         console.log("로그인 실패...");
         res.render('../views/chanwoong/login', {title: 'Login'});
-        }
       }
     }
-  })
+  }
+})
 
   //connection.end();
 })

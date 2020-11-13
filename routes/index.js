@@ -35,6 +35,9 @@ function handleDisconnect() {
 
 handleDisconnect();
 
+
+
+
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 //   res.render('../views/luxe/index', { title: 'Home' });
@@ -59,15 +62,17 @@ handleDisconnect();
 // });
 
 
+var cust_info = null;
+
 // chanwoong routing
 router.get('/', function(req, res, next) {
-  res.render('../views/chanwoong/index', { title: 'Home' , cust_info:null});
+  res.render('../views/chanwoong/index', { title: 'Home' , cust_info:cust_info});
 });
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' });
 });
 router.get('/reservation', function(req, res, next) {
-  res.render('../views/chanwoong/reservation', { title: 'Reservation' });
+  res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:cust_info});
 });
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' });
@@ -85,20 +90,20 @@ router.post('/main',function (req,res){
       res.render('../views/chanwoong/login', {title: 'Login'});
     }
     else{
-    for (var i = 0; i < result.length; i++) {
-      if (result[i].login_pw == userpwd) {
-        console.log("로그인 성공");
-        res.render('../views/chanwoong/index', {title: 'Home',cust_info:result[i]});
-        break;
-      }
-      else {
-        console.log("로그인 실패...");
-        res.render('../views/chanwoong/login', {title: 'Login'});
+      for (var i = 0; i < result.length; i++) {
+        if (result[i].login_pw == userpwd) {
+          console.log("로그인 성공");
+          cust_info = result[i];
+          res.render('../views/chanwoong/index', {title: 'Home',cust_info:cust_info});
+          break;
+        }
+        else {
+          console.log("로그인 실패...");
+          res.render('../views/chanwoong/login', {title: 'Login'});
+        }
       }
     }
-  }
-})
-
+  })
   //connection.end();
 })
 
@@ -118,4 +123,6 @@ router.post('/search_room',function(req,res){
 
   }
 })
+
+
 module.exports = router;

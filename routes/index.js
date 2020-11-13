@@ -102,4 +102,20 @@ router.post('/main',function (req,res){
   //connection.end();
 })
 
+
+router.post('/search_room',function(req,res){
+  var room = req.body.room;
+  var date_arrival = req.body.date-date_arrival;
+  var date_departure = req.body.date-date_departure;
+  var adult_num = req.body.adults;
+  var child_num = req.body.children;
+  var baby_num = req.body.babies;
+
+  if(room != 0){
+    var sql1 = 'SELECT count(id) FROM reservation WHERE CHECKIN_DATE BETWEEN ? AND ? OR CHECKOUT_DATE BETWEEN ? AND ? AND ROOM_TYPE = ? '
+    
+  }else {
+
+  }
+})
 module.exports = router;

@@ -13,7 +13,7 @@
 <!--                title의 값을 받아와서 사용자가 어디위치에 있는지 표시해주는 기능-->
                 
                 <li <% if (title == 'Home'){ %> class="active" <% }%>><a href="/">Home</a></li>
-                <% if(cusname == null) { %>
+                <% if(cust_info == null) { %>
                     <li <% if (title == 'Login'){ %> class="active" <% }%>><a href="/Login">Login</a></li>
                 <% } else {%>
                     <li <% if (title == 'Login'){ %> class="active" <% }%>><a href="/Login">WTF</a></li>

@@ -10,7 +10,7 @@ var db_config = {
   database : 'heroku_a9f9515c41ce864'
 };
 
-var connection;
+
 
 function handleDisconnect() {
   connection = mysql.createConnection(db_config); // Recreate the connection, since
@@ -35,31 +35,6 @@ function handleDisconnect() {
 
 handleDisconnect();
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('../views/luxe/index', { title: 'Home' });
-// });
-// router.get('/login', function(req, res, next) {
-//   res.render('../views/luxe/login', { title: 'Login' });
-// });
-// router.get('/services', function(req, res, next) {
-//   res.render('../views/luxe/services', { title: 'Services' });
-// });
-// router.get('/blog', function(req, res, next) {
-//   res.render('../views/luxe/blog', { title: 'Blog' });
-// });
-// router.get('/contract', function(req, res, next) {
-//   res.render('../views/luxe/contract', { title: 'Contract' });
-// });
-// router.get('/hotel', function(req, res, next) {
-//   res.render('../views/luxe/hotel', { title: 'Hotel' });
-// });
-// router.get('/booking', function(req, res, next) {
-//   res.render('../views/luxe/booking', { title: 'Booking' });
-// });
-
-
-// chanwoong routing
 router.get('/', function(req, res, next) {
   res.render('../views/chanwoong/index', { title: 'Home' });
 });
@@ -78,6 +53,78 @@ router.get('/room', function(req, res, next) {
 router.get('/register',function(req,res, next){
   res.render('../views/chanwoong/register',{title:'Register'});
 });
+
+router.post('/register', function (req, res) {
+  var korean_first = req.body.korean_first;
+  var korean_last = req.body.korean_last;
+  var english_first = req.body.english_first;
+  var english_last = req.body.english_last;
+  var phone_num = req.body.phone_num;
+  var email = req.body.email;
+
+  var password = req.body.password;
+
+  var gender = req.body.gender;
+  var birth = req.body.birth;
+  var nation = req.body.nation;
+  var add_city = req.body.add_city;
+  var add_state = req.body.add_state;
+  var zip = req.body.zip;
+  var street = req.body.street;
+  var apart_num = req.body.apart_num;
+  var detail_address = req.body.detail_address;
+  
+  var sql1 = 'INSERT INTO address(ZIP_CODE, ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, ADDRESS5) VALUES(?, ?, ?, ?, ?,?)';
+  connection.query(sql1, [zip, add_city, add_state, street, apart_num, detail_address], function (error, results, fields) {
+    if (error) {
+      console.log(error);
+    } 
+    console.log(results);
+  });
+
+
+  var address_id_from_table;
+
+  connection.query('SELECT ADDRESS_ID FROM address ORDER BY ADDRESS_ID DESC LIMIT 1', function(error, results) {
+    if (error) {
+      console.log(error);
+    } 
+    address_id_from_table = results[0].ADDRESS_ID;
+    console.log("주목 : " + results[0].ADDRESS_ID);
+    return address_id_from_table;
+  });
+  
+
+  var sql2 = 'INSERT INTO person(KOR_FIRST_NAME, KOR_LAST_NAME, ENG_FIRST_NAME, ENG_LAST_NAME, PHONE_NUM, EMAIL, ADDRESS_ID, GENDER, BIRTH, NATION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+  connection.query(sql2, [korean_first, korean_last, english_first, english_last, phone_num, email, address_id_from_table, gender, birth, nation], function (error, results, fields) {
+    if (error) {
+      console.log(error);
+    }
+    console.log(results);
+  });
+
+
+  var sql_person_id;
+  connection.query('SELECT PERSON_ID FROM PERSON ORDER BY ADDRESS_ID DESC LIMIT 1', function(error, results) {
+    if (error) {
+      console.log(error);
+    } 
+    sql_person_id = results[0].PERSON_ID;
+    return sql_person_id;
+  });
+
+
+  var sql3 = 'INSERT INTO customer(PERSON_ID, LOGIN_ID, LOGIN_PW) VALUES(?, ?, ?)';
+  conncettion.query(sql3, [sql_person_id, email, password], function (error, results, fields) {
+    if (error) {
+      console.log(error);
+    }
+    console.log(results);
+  });
+  
+  res.render('../views/chanwoong/index', {title: 'Home' });
+});
+
 
 
 module.exports = router;

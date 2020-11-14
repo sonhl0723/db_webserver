@@ -41,46 +41,46 @@
         <div class="row probootstrap-gutter40">
             <div class="col-md-8">
                 <h2 class="mt0">Register Form</h2>
-                <form action="#" method="post" class="probootstrap-form">
+                <form action="/register" method="post" class="probootstrap-form">
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Korean First Name</label>
-                            <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                            <input type="text" name = "korean_first" placeholder="Enter First Name Here.." class="form-control">
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>Korean Last Name</label>
-                            <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                            <input type="text" name="korean_last" placeholder="Enter Last Name Here.." class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>English First Name</label>
-                            <input type="text" placeholder="Enter First Name Here.." class="form-control">
+                            <input type="text" name="english_first" placeholder="Enter First Name Here.." class="form-control">
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>English Last Name</label>
-                            <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                            <input type="text" name="english_last" placeholder="Enter Last Name Here.." class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Phone Number</label>
-                        <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                        <input type="text" name="phone_num" placeholder="Enter Phone Number Here.." class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
                         <div class="form-field">
                             <i class="icon icon-mail"></i>
-                            <input type="email" placeholder="Enter Email Here.." class="form-control" id="email" name="email">
+                            <input type="email" name="email" placeholder="Enter Email Here.." class="form-control" id="email" name="email">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" placeholder="********" class="form-control">
+                        <input type="password" name="password" placeholder="********" class="form-control">
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Gender</label>
-                            <select name="Gender" class="form-control">
+                            <select name="gender" class="form-control">
                                 <option value="1" selected>Male</option>
                                 <option value="2">Female</option>
                             </select>
@@ -88,12 +88,12 @@
                         <div class="col-sm-4 form-group">
                             <label>Birth</label>
                             <div>
-                                <input type="date" name=today" class="form-control">
+                                <input type="date" name="birth" class="form-control">
                             </div>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Nation</label>
-                            <select name="country" class="form-control" id="country">
+                            <select name="nation" class="form-control" id="country">
                                 <option value="0" label="Select a country ... " selected="selected">Select a country ... </option>
                                 <optgroup id="country-optgroup-Africa" label="Africa">
                                     <option value="DZ" label="Algeria">Algeria</option>
@@ -364,31 +364,31 @@
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>City</label>
-                            <input type="text" placeholder="Enter City Name Here.." class="form-control">
+                            <input type="text" name="add_city" placeholder="Enter City Name Here.." class="form-control">
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>State</label>
-                            <input type="text" placeholder="Enter State Name Here.." class="form-control">
+                            <input type="text" name="add_state" placeholder="Enter State Name Here.." class="form-control">
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Zip</label>
-                            <input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                            <input type="text" name="zip" placeholder="Enter Zip Code Here.." class="form-control">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>Street</label>
-                            <input type="text" placeholder="Enter Street Name Here.." class="form-control">
+                            <input type="text" name="street" placeholder="Enter Street Name Here.." class="form-control">
                         </div>
                         <div class="col-sm-6 form-group">
 
                             <label>Apartment Information</label>
-                            <input type="text" placeholder="Enter Apartment Information Here.." class="form-control">
+                            <input type="text" name="apart_num" placeholder="Enter Apartment Information Here.." class="form-control">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Detail Address</label>
-                        <textarea placeholder="Enter Detail Address Here.." rows="3" class="form-control"></textarea>
+                        <textarea placeholder="Enter Detail Address Here.." name="detail_address" rows="3" class="form-control"></textarea>
                     </div>
 
                     <div class="form-group">

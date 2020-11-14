@@ -66,6 +66,9 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' });
 });
+router.get('/register', function(req, res, next) {
+  res.render('../views/chanwoong/register', { title: 'register' });
+});
 router.get('/reservation', function(req, res, next) {
   res.render('../views/chanwoong/reservation', { title: 'Reservation' });
 });

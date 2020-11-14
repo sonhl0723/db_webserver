@@ -76,9 +76,6 @@ router.get('/', function(req, res, next) {
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' , cust_info:cust_info});
 });
-router.get('/register', function(req, res, next) {
-  res.render('../views/chanwoong/register', { title: 'register' });
-});
 router.get('/reservation', function(req, res, next) {
   res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:cust_info,avail_roomtype:available_roomtypes});
 });
@@ -86,7 +83,7 @@ router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' , cust_info:cust_info});
 });
 router.get('/register',function(req,res, next){
-  res.render('../views/chanwoong/register',{title:'Register'});
+  res.render('../views/chanwoong/register',{title:'Register', cust_info:cust_info});
 });
 
 router.post('/register', function (req, res) {
@@ -130,14 +127,8 @@ router.post('/register', function (req, res) {
     });
     console.log(rows);
   });
-  
-  
-
-
-  
-  
   console.log("가입성공");
-  res.render('../views/chanwoong/index', {title: 'Home' });
+  res.render('../views/chanwoong/index', {title: 'Home' , cust_info:cust_info});
 });
 
 
@@ -145,7 +136,7 @@ router.post('/register', function (req, res) {
 router.post('/main',function (req,res) {
   var userid = req.body.userid;
   var userpwd = req.body.userpwd;
-  connection.query('SELECT * FROM customer cross join person WHERE person.person_id=customer.person_id and login_id = ?', [userid], function (error, result, fields) {
+  connection.query('SELECT * FROM customer natural join person WHERE login_id = ?', [userid], function (error, result, fields) {
     if (error) {
       console.log(error);
     }
@@ -170,7 +161,7 @@ router.post('/main',function (req,res) {
 })
 
 
-  router.post('/search_room', function (req, res) {
+router.post('/search_room', function (req, res) {
     var room = Number(req.body.room);
     var date_arrival = req.body.datedpar;
     var date_departure = req.body.datearr;
@@ -280,7 +271,7 @@ router.post('/main',function (req,res) {
         cust_info: cust_info,
         avail_roomtype: available_roomtypes
       });
-      })
+    });
 
 })
 

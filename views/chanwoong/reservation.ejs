@@ -42,7 +42,10 @@
         <div class="row probootstrap-gutter40">
             <h2 class="mt0 text-center">날짜,인원 선택</h2>
             <hr style="width: 100%; background-color: #903479; height: 2px;">
-            <form action="#" method="post" class="probootstrap-form">
+
+
+            <form action="/search_room" method="post" class="probootstrap-form">
+
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
@@ -50,10 +53,12 @@
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
                                 <select name="room" id="room" class="form-control">
-                                    <option value="">Select a Room</option>
-                                    <option value="1">Classic Room</option>
-                                    <option value="2">Ultra Superior Room</option>
-                                    <option value="3">Grand Deluxe Room</option>
+                                    <option value="0">Select a Room</option>
+                                    <option value="1">STANDARD</option>
+                                    <option value="2">DELUXE</option>
+                                    <option value="3">PREMIUM</option>
+                                    <option value="4">SUITE</option>
+                                    <option value="5">EXECUTIVE_SUITE</option>
                                 </select>
                             </div>
                         </div>
@@ -63,22 +68,25 @@
                             <label for="date-arrival">체크인</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" class="form-control" id="date-arrival" name="date-arrival">
+                                <input type="text" class="form-control" id="date-arrival" name="datearr">
                             </div>
                         </div>
                     </div>
+                    <!-- 몇박몇일인지 계산 해주는 값 -->
+
                     <div class="col-md-1">
                         <div class="form-group">
                             <label for="fname">숙박</label>
                             <input type="text" class="form-control" id="" name="">
                         </div>
                     </div>
+
                     <div class="col-md-2">
                         <div class="form-group">
                             <label for="date-departure">체크아웃</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" class="form-control" id="date-departure" name="date-departure">
+                                <input type="text" class="form-control" id="date-departure" name="datedpar">
                             </div>
                         </div>
                     </div>

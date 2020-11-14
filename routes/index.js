@@ -62,20 +62,20 @@ handleDisconnect();
 // });
 
 
-var cust_info = null;
+var cust_info = null;//라우터가 처음 실행될 때 로그인 안된 상태를 표현
 
 // chanwoong routing
 router.get('/', function(req, res, next) {
   res.render('../views/chanwoong/index', { title: 'Home' , cust_info:cust_info});
 });
 router.get('/login', function(req, res, next) {
-  res.render('../views/chanwoong/login', { title: 'Login' });
+  res.render('../views/chanwoong/login', { title: 'Login' , cust_info:cust_info});
 });
 router.get('/reservation', function(req, res, next) {
   res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:cust_info});
 });
 router.get('/room', function(req, res, next) {
-  res.render('../views/chanwoong/room', { title: 'Room' });
+  res.render('../views/chanwoong/room', { title: 'Room' , cust_info:cust_info});
 });
 
 router.post('/main',function (req,res){
@@ -87,7 +87,7 @@ router.post('/main',function (req,res){
     }
     if(result.length == 0){
       console.log("일치하는 아이디 없음");
-      res.render('../views/chanwoong/login', {title: 'Login'});
+      res.render('../views/chanwoong/login', {title: 'Login',cust_info:cust_info});
     }
     else{
       for (var i = 0; i < result.length; i++) {
@@ -99,7 +99,7 @@ router.post('/main',function (req,res){
         }
         else {
           console.log("로그인 실패...");
-          res.render('../views/chanwoong/login', {title: 'Login'});
+          res.render('../views/chanwoong/login', {title: 'Login',cust_info:cust_info});
         }
       }
     }
@@ -116,12 +116,21 @@ router.post('/search_room',function(req,res){
   var child_num = req.body.children;
   var baby_num = req.body.babies;
 
-  if(room != 0){
-    var sql1 = 'SELECT count(id) FROM reservation WHERE CHECKIN_DATE BETWEEN ? AND ? OR CHECKOUT_DATE BETWEEN ? AND ? AND ROOM_TYPE = ? '
-    
-  }else {
-
+  if(room != 0){//방을 선택한 경
+    //예약 가능한 방의 개수를 알기 위해 예약이 잡혀있는 방의 개수를 구한다
+    var sql1 = 'SELECT count(id) FROM reservation WHERE ((CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?)) AND ROOM_TYPE = ? ';
+    var sql2 = 'select ';
+  }else {//방을 선택하지 않은 경우 선택된 인원에 따라 모든 방의 종류를 보여줌
+    var sql1 = 'SELECT count(id) FROM reservation';// WHERE (CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?)';
+    var sql2 = 'select * from room_type';
+    connection.query(sql1,function (error, result, fields) {
+      if (error) {
+        console.log(error);
+      }
+      console.log(result[0].count(id));
+    })
   }
+  res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
 })
 
 

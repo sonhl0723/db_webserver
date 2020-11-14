@@ -86,17 +86,42 @@ router.post('/main',function (req,res) {
 
   router.post('/search_room', function (req, res) {
     var room = req.body.room;
-    var date_arrival = req.body.date - date_arrival;
-    var date_departure = req.body.date - date_departure;
+    var date_arrival = req.body.datedpar;
+    var date_departure = req.body.datearr;
     var adult_num = req.body.adults;
     var child_num = req.body.children;
     var baby_num = req.body.babies;
     var people = adult_num + child_num + baby_num;
+    var a="",b="",c="";
+    var step =1;
+    for(var i=0;i<date_arrival.length;i++){
+      if(date_arrival[i] != '/'){
+        if(step == 1) a += date_arrival[i];
+        else if(step ==2) b+= date_arrival[i];
+        else if(step ==3) c+= date_arrival[i];
+      }
+      else{
+        step++;
+      }
+    }var date_arr=c+"-"+a+"-"+b+" 00:00:00";
+    a="";b="";c="";step =1;
+    for(var i=0;i<date_departure.length;i++){
+      if(date_departure[i] != '/'){
+        if(step == 1) a += date_departure[i];
+        else if(step ==2) b+= date_departure[i];
+        else if(step ==3) c+= date_departure[i];
+      }
+      else{
+        step++;
+      }
+    }var date_dpa=c+"-"+a+"-"+b+" 00:00:00";
+
+
 
     var avail_type = null;//인원수에 따른 가능한 방 타입들
 
-    var sql2 = 'select * from room_type';
-    connection.query(sql1, function (error, result, fields) {
+    var sql = 'select * from room_type';
+    connection.query(sql, function (error, result, fields) {
       if (error) {
         console.log(error);
       }
@@ -105,25 +130,32 @@ router.post('/main',function (req,res) {
           avail_type += result[i];
         }
       }
+      res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
     })
     if (room != 0) {//방을 선택한 경우
       //예약 가능한 방의 개수를 알기 위해 예약이 잡혀있는 방의 개수를 구한다
-      var sql1 = 'SELECT count(id) FROM reservation WHERE ((CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?)) AND ROOM_TYPE = ? ';
+      var sql1 = 'SELECT count(reservation_id) as re,room_type FROM reservation WHERE ((CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?)) AND ROOM_TYPE = ? ';
     } else {//방을 선택하지 않은 경우 선택된 인원에 따라 모든 방의 종류를 보여줌
-      var sql1 = 'SELECT count(id) FROM reservation group by room_type';
-      connection.query(sql1, function (error, result, fields) {
+      var test = 'SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') OR (CHECKOUT_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') group by room_type';
+      var sql1 = 'SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?) group by room_type';
+      connection.query(test, function (error, result, fields) {
         if (error) {
           console.log(error);
         }
-        if (result[0] == null) {
-          console.log("========================");
-        }
-        console.log(result[0]);
+        console.log("=======================================================================");
+        console.log(result[0].re);
+        console.log(result);
+        res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
       })
     }
-    res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
   })
 
 
 
+
 module.exports = router;
+
+
+
+//INSERT INTO reservation VALUES (272, 271, 'EXECUTIVE_SUITE' ,null,'2000-1-1 00:00:00','2000-1-4 00:00:00',271,1,1,1,1);
+// SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN '1996-4-1 00:00:00' AND '2020-12-5 00:00:00') OR (CHECKOUT_DATE BETWEEN '1996-4-1 00:00:00' AND '2020-12-5 00:00:00') group by room_type;

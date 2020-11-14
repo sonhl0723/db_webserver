@@ -42,6 +42,33 @@ var cust_info = null;//라우터가 처음 실행될 때 로그인 안된 상태
 var available_roomtypes = null;
 
 
+/* GET home page. */
+// router.get('/', function(req, res, next) {
+//   res.render('../views/luxe/index', { title: 'Home' });
+// });
+// router.get('/login', function(req, res, next) {
+//   res.render('../views/luxe/login', { title: 'Login' });
+// });
+// router.get('/services', function(req, res, next) {
+//   res.render('../views/luxe/services', { title: 'Services' });
+// });
+// router.get('/blog', function(req, res, next) {
+//   res.render('../views/luxe/blog', { title: 'Blog' });
+// });
+// router.get('/contract', function(req, res, next) {
+//   res.render('../views/luxe/contract', { title: 'Contract' });
+// });
+// router.get('/hotel', function(req, res, next) {
+//   res.render('../views/luxe/hotel', { title: 'Hotel' });
+// });
+// router.get('/booking', function(req, res, next) {
+//   res.render('../views/luxe/booking', { title: 'Booking' });
+// });
+
+
+var cust_info = null;//라우터가 처음 실행될 때 로그인 안된 상태를 표현
+
+
 // chanwoong routing
 router.get('/', function(req, res, next) {
   res.render('../views/chanwoong/index', { title: 'Home' , cust_info:cust_info});
@@ -54,7 +81,6 @@ router.get('/reservation', function(req, res, next) {
 });
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' , cust_info:cust_info});
-
 });
 
 
@@ -68,7 +94,8 @@ router.post('/main',function (req,res) {
     if (result.length == 0) {
       console.log("일치하는 아이디 없음");
       res.render('../views/chanwoong/login', {title: 'Login', cust_info: cust_info});
-    } else {
+    }
+    else{
       for (var i = 0; i < result.length; i++) {
         if (result[i].login_pw == userpwd) {
           console.log("로그인 성공");
@@ -196,14 +223,11 @@ router.post('/main',function (req,res) {
         avail_roomtype: available_roomtypes
       });
       })
-  })
 
-
-
-
-module.exports = router;
-
+})
 
 
 //INSERT INTO reservation VALUES (272, 271, 'EXECUTIVE_SUITE' ,null,'2000-1-1 00:00:00','2000-1-4 00:00:00',271,1,1,1,1);
 // SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN '1996-4-1 00:00:00' AND '2020-12-5 00:00:00') OR (CHECKOUT_DATE BETWEEN '1996-4-1 00:00:00' AND '2020-12-5 00:00:00') group by room_type;
+
+module.exports = router;

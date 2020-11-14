@@ -61,7 +61,7 @@ handleDisconnect();
 
 // chanwoong routing
 router.get('/', function(req, res, next) {
-  res.render('../views/chanwoong/index', { title: 'Home' , cust_info:null});
+  res.render('../views/chanwoong/index', { title: 'Home' });
 });
 router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' });
@@ -72,34 +72,9 @@ router.get('/reservation', function(req, res, next) {
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' });
 });
+router.get('/register',function(req,res, next){
+  res.render('../views/chanwoong/register',{title:'Register'});
+});
 
-router.post('/main',function (req,res){
-  var userid = req.body.userid;
-  var userpwd = req.body.userpwd;
-  connection.query('SELECT customer.ID, login_id,login_pw, ENG_FIRST_NAME FROM customer cross join person WHERE person.id=customer.person_id and login_id = ?',[userid],function (error, result, fields) {
-    if (error) {
-      console.log(error);
-    }
-    if(result.length == 0){
-      console.log("일치하는 아이디 없음");
-      res.render('../views/chanwoong/login', {title: 'Login'});
-    }
-    else{
-    for (var i = 0; i < result.length; i++) {
-      if (result[i].login_pw == userpwd) {
-        console.log("로그인 성공");
-        res.render('../views/chanwoong/index', {title: 'Home',cust_info:result[i]});
-        break;
-      }
-      else {
-        console.log("로그인 실패...");
-        res.render('../views/chanwoong/login', {title: 'Login'});
-      }
-    }
-  }
-})
-
-  //connection.end();
-})
 
 module.exports = router;

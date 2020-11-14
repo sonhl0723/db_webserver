@@ -73,6 +73,16 @@ router.post('/register', function (req, res) {
   var street = req.body.street;
   var apart_num = req.body.apart_num;
   var detail_address = req.body.detail_address;
+
+  var address_id = null;
+
+  connection.query('SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "heroku_a9f9515c41ce864" AND TABLE_NAME = "address"', function(error, results) {
+    if (error) {
+      console.log(error);
+    } 
+    address_id = results.AUTO_INCREMENT;
+    console.log("주목 : " + results);
+  });
   
   var sql1 = 'INSERT INTO address(ZIP_CODE, ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, ADDRESS5) VALUES(?, ?, ?, ?, ?,?)';
   connection.query(sql1, [zip, add_city, add_state, street, apart_num, detail_address], function (error, results, fields) {
@@ -81,22 +91,17 @@ router.post('/register', function (req, res) {
     } 
     console.log(results);
   });
-
-
-  var address_id_from_table;
-
-  connection.query('SELECT ADDRESS_ID FROM address ORDER BY ADDRESS_ID DESC LIMIT 1', function(error, results) {
+  
+  var person_id = null;
+  connection.query('SELECT AUTO_INCREMENT FROM information_schema.TABLES WHERE TABLE_SCHEMA = "heroku_a9f9515c41ce864" AND TABLE_NAME = "person"', function(error, results) {
     if (error) {
       console.log(error);
     } 
-    address_id_from_table = results[0].ADDRESS_ID;
-    console.log("주목 : " + results[0].ADDRESS_ID);
-    return address_id_from_table;
+    person_id = results.AUTO_INCREMENT;
   });
-  
 
   var sql2 = 'INSERT INTO person(KOR_FIRST_NAME, KOR_LAST_NAME, ENG_FIRST_NAME, ENG_LAST_NAME, PHONE_NUM, EMAIL, ADDRESS_ID, GENDER, BIRTH, NATION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-  connection.query(sql2, [korean_first, korean_last, english_first, english_last, phone_num, email, address_id_from_table, gender, birth, nation], function (error, results, fields) {
+  connection.query(sql2, [korean_first, korean_last, english_first, english_last, phone_num, email, address_id, gender, birth, nation], function (error, results, fields) {
     if (error) {
       console.log(error);
     }
@@ -104,24 +109,18 @@ router.post('/register', function (req, res) {
   });
 
 
-  var sql_person_id;
-  connection.query('SELECT PERSON_ID FROM PERSON ORDER BY ADDRESS_ID DESC LIMIT 1', function(error, results) {
-    if (error) {
-      console.log(error);
-    } 
-    sql_person_id = results[0].PERSON_ID;
-    return sql_person_id;
-  });
+  
 
 
   var sql3 = 'INSERT INTO customer(PERSON_ID, LOGIN_ID, LOGIN_PW) VALUES(?, ?, ?)';
-  conncettion.query(sql3, [sql_person_id, email, password], function (error, results, fields) {
+  connection.query(sql3, [person_id, email, password], function (error, results, fields) {
     if (error) {
       console.log(error);
     }
     console.log(results);
   });
   
+  console.log("가입성공");
   res.render('../views/chanwoong/index', {title: 'Home' });
 });
 

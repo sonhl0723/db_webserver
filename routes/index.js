@@ -61,6 +61,8 @@ handleDisconnect();
 //   res.render('../views/luxe/booking', { title: 'Booking' });
 // });
 
+var cus_info =null;
+
 
 var cust_info = null;//라우터가 처음 실행될 때 로그인 안된 상태를 표현
 
@@ -76,6 +78,7 @@ router.get('/reservation', function(req, res, next) {
 });
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' , cust_info:cust_info});
+
 });
 
 router.post('/main',function (req,res){

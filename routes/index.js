@@ -39,6 +39,7 @@ handleDisconnect();
 
 //vars for post method
 var cust_info = null;//라우터가 처음 실행될 때 로그인 안된 상태를 표현
+var available_roomtypes = null;
 
 
 // chanwoong routing
@@ -49,7 +50,7 @@ router.get('/login', function(req, res, next) {
   res.render('../views/chanwoong/login', { title: 'Login' , cust_info:cust_info});
 });
 router.get('/reservation', function(req, res, next) {
-  res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:cust_info});
+  res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:cust_info,avail_roomtype:available_roomtypes});
 });
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' , cust_info:cust_info});
@@ -85,12 +86,12 @@ router.post('/main',function (req,res) {
 
 
   router.post('/search_room', function (req, res) {
-    var room = req.body.room;
+    var room = Number(req.body.room);
     var date_arrival = req.body.datedpar;
     var date_departure = req.body.datearr;
-    var adult_num = req.body.adults;
-    var child_num = req.body.children;
-    var baby_num = req.body.babies;
+    var adult_num = Number(req.body.adults);
+    var child_num = Number(req.body.children);
+    var baby_num = Number(req.body.babies);
     var people = adult_num + child_num + baby_num;
     var a="",b="",c="";
     var step =1;
@@ -116,38 +117,85 @@ router.post('/main',function (req,res) {
       }
     }var date_dpa=c+"-"+a+"-"+b+" 00:00:00";
 
+    var avail_types;
 
-
-    var avail_type = null;//인원수에 따른 가능한 방 타입들
-
-    var sql = 'select * from room_type';
-    connection.query(sql, function (error, result, fields) {
+    var sql1 = 'select * from room_type';
+    connection.query(sql1, function (error, result, fields) {
       if (error) {
         console.log(error);
       }
-      for (var i = 0; i <= result.lenght; i++) {
-        if (result[i].capacity_max >= people) {
-          avail_type += result[i];
+      var x = result;
+      for(var i=result.length-1;i>=0;i--) {
+        if(result[i].CAPACITY_MAX < people){
+          x.splice(i,1);//인원수로 거른다
         }
       }
-      res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
+      avail_types = x;
     })
-    if (room != 0) {//방을 선택한 경우
-      //예약 가능한 방의 개수를 알기 위해 예약이 잡혀있는 방의 개수를 구한다
-      var sql1 = 'SELECT count(reservation_id) as re,room_type FROM reservation WHERE ((CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?)) AND ROOM_TYPE = ? ';
-    } else {//방을 선택하지 않은 경우 선택된 인원에 따라 모든 방의 종류를 보여줌
-      var test = 'SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') OR (CHECKOUT_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') group by room_type';
-      var sql1 = 'SELECT count(reservation_id) as re FROM reservation where (CHECKIN_DATE BETWEEN ? AND ?) OR (CHECKOUT_DATE BETWEEN ? AND ?) group by room_type';
-      connection.query(test, function (error, result, fields) {
-        if (error) {
-          console.log(error);
+    var sql2 = 'SELECT count(reservation_id) as re,room_type FROM reservation natural join room_type where (CHECKIN_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') OR (CHECKOUT_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') group by room_type';
+    connection.query(sql2, function (error, result, fields) {
+      if (error) {
+        console.log(error);
+      }
+      var myres = avail_types;
+      var jmyres = JSON.parse(JSON.stringify(avail_types));//값 비교를 위함;
+      if(room != 0){
+
+        switch (room){
+          case 1:for(var i =avail_types.length-1;i >=0;i--){
+            if(!(jmyres[i].ROOM_TYPE  =="STANDARD_TWIN"||jmyres[i].ROOM_TYPE  =="STANDARD_DOUBLE"||jmyres[i].ROOM_TYPE  =="STANDARD_FAMILY")){
+              myres.splice(i,1);
+            }
+          }break;
+          case 2:for(var i =avail_types.length-1;i >=0;i--){
+            if(!(jmyres[i].ROOM_TYPE  =="DELUXE_TWIN"||jmyres[i].ROOM_TYPE  =="DELUXE_DOUBLE"||jmyres[i].ROOM_TYPE  =="DELUXE_FAMILY")){
+              myres.splice(i,1);
+            }
+          }break;
+          case 3:for(var i =avail_types.length-1;i >=0;i--){
+            if(!(jmyres[i].ROOM_TYPE  =="PREMIUM_TWIN"||jmyres[i].ROOM_TYPE  =="PREMIUM_DOUBLE")){
+              myres.splice(i,1);
+            }
+          }break;
+          case 4:for(var i =avail_types.length-1;i >=0;i--){
+            if(jmyres[i].ROOM_TYPE  !="SUITE"){
+              myres.splice(i,1);
+            }
+            // console.log(jmyres[i].ROOM_TYPE  !="SUITE");
+            // console.log(myres.length);
+          }break;
+          case 5:for(var i =avail_types.length-1;i >=0;i--){
+            if(jmyres[i].ROOM_TYPE != "EXCUTIVE_SUITE"){
+              myres.splice(i,1);
+            }
+          }break;
         }
-        console.log("=======================================================================");
-        console.log(result[0].re);
-        console.log(result);
-        res.render('../views/chanwoong/reservation', {title: 'Reservation', cust_info: cust_info});
+        console.log(JSON.stringify(myres));
+        available_roomtypes = myres;
+      }
+      else {//방을 선택 안했기 때문에 간으한 모든 방을 보여줌
+        for (var i = 0; i < avail_types.length; i++) {
+          var index = -1;
+          for (var x = 0; result.length > x; x++) {
+            if (avail_types[i].room_type == result[x].room_type) {
+              index = x;
+            }
+          }
+          if (index > -1) {
+            if (avail_types[i].OVERBOOK_COUNT <= result[index].re) {
+              myres.splice(i, 1);
+            }
+          }
+        }
+        if (myres.length == 0) myres = null;
+        available_roomtypes = myres;
+      }
+      res.render('../views/chanwoong/reservation', {
+        title: 'Reservation',
+        cust_info: cust_info,
+        avail_roomtype: available_roomtypes
+      });
       })
-    }
   })
 
 

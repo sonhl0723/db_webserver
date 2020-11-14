@@ -75,6 +75,9 @@ router.get('/reservation', function(req, res, next) {
 router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' });
 });
+router.get('/register',function(req,res, next){
+  res.render('../views/chanwoong/register',{title:'Register'});
+});
 
 
 module.exports = router;

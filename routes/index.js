@@ -221,7 +221,7 @@ router.post('/search_room', function (req, res) {
             }
           }break;
         }
-        console.log(JSON.stringify(myres));
+        if (myres.length == 0) myres = null;
         available_roomtypes = myres;
       }
       else {//방을 선택 안했기 때문에 간으한 모든 방을 보여줌
@@ -240,6 +240,9 @@ router.post('/search_room', function (req, res) {
         }
         if (myres.length == 0) myres = null;
         available_roomtypes = myres;
+      }
+      for(var i =0 ;i < available_roomtypes.length; i++){
+        console.log(available_roomtypes[i].ROOM_TYPE);
       }
       res.render('../views/chanwoong/reservation', {
         title: 'Reservation',

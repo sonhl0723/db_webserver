@@ -44,15 +44,15 @@
             <hr style="width: 100%; background-color: #903479; height: 2px;">
 
 
-            <form action="/search_room" method="post" class="probootstrap-form">
+            <form action="/search_room" method="post" class="probootstrap-form ">
 
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group" style="text-align:center;">
                             <label for="room">Room</label>
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
-                                <select name="room" id="room" class="form-control">
+                                <select name="room" id="room" class="form-control" style="font-size: 14px; background:#ffffff">
                                     <option value="0">Select a Room</option>
                                     <option value="1">STANDARD</option>
                                     <option value="2">DELUXE</option>
@@ -64,39 +64,39 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group" style="text-align:center;">
                             <label for="date-arrival">체크인</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" class="form-control" id="date-arrival" name="datearr">
+                                <input type="text" class="form-control" id="date-arrival" name="datearr" style="background:#ffffff;">
                             </div>
                         </div>
                     </div>
                     <!-- 몇박몇일인지 계산 해주는 값 -->
 
-                    <div class="col-md-1">
+                    <div class="col-md-1"style="text-align:center;">>
                         <div class="form-group">
                             <label for="fname">숙박</label>
-                            <input type="text" class="form-control" id="" name="">
+                            <input type="text" class="form-control" id="" name="" style="background:#ffffff";>
                         </div>
                     </div>
 
                     <div class="col-md-2">
-                        <div class="form-group">
+                        <div class="form-group"style="text-align:center;">
                             <label for="date-departure">체크아웃</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" class="form-control" id="date-departure" name="datedpar">
+                                <input type="text" class="form-control" id="date-departure" name="datedpar"style="background:#ffffff;">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1" style="width: 9%">
+                    <div class="col-md-1" style="width: 9%" style="text-align:center;">
                         <div class="form-group">
                             <label for="adults">성인</label>
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
-                                <select name="adults" id="adults" class="form-control">
-                                    <option value="">1</option>
+                                <select name="adults" id="adults" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -105,13 +105,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-1" style="width: 9%">
+                    <div class="col-md-1" style="width: 9%" style="text-align:center;">
                         <div class="form-group">
                             <label for="children">어린이</label>
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
-                                <select name="children" id="children" class="form-control">
-                                    <option value="">1</option>
+                                <select name="children" id="children" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -121,12 +121,12 @@
                         </div>
                     </div>
                     <div class="col-md-1" style="width: 9%">
-                        <div class="form-group">
+                        <div class="form-group"style="text-align:center;">>
                             <label for="adults">유아</label>
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
-                                <select name="babies" id="babies" class="form-control">
-                                    <option value="">1</option>
+                                <select name="babies" id="babies" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0">0</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -136,9 +136,10 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input style="margin-top: 1.2%; margin-left: 2%" type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Search">
+                        <input style="margin-top: 1.9%; margin-left: 2%" type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Search">
                     </div>
                 </div>
+                <hr style="width: 100%; background-color: #903479; height: 2px;">
             </form>
         </div>
         <!--        </div>-->

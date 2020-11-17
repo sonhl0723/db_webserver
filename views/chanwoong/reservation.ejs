@@ -47,13 +47,12 @@
             <form action="/search_room" method="post" class="probootstrap-form ">
 
                 <div class="row" style="margin-left: 7%;">
-                    <% if () %>
                     <div class="col-md-2">
                         <div class="form-group" style="text-align:center;">
                             <label for="room">Room</label>
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
-                                <select name="room" id="room" class="form-control" style="font-size: 14px; background:#ffffff">
+                                <select name="room" <% if (avail_roomtype != null) { %> value = "0" <% } %> id="room" class="form-control" style="font-size: 14px; background:#ffffff">
                                     <option value="0">Select a Room</option>
                                     <option value="1">STANDARD</option>
                                     <option value="2">DELUXE</option>

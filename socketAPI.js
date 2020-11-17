@@ -1,6 +1,7 @@
-let socket_io = require('socket.io');
-let io = socket_io();
-let socketAPI = {};
+var socketAPI = {};
+var socket_io = require('socket.io');
+var io = socket_io();
+
 
 
 io.on('connection', function (socket){

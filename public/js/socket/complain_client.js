@@ -1,7 +1,6 @@
-$(
-    function (){
 
-        let socket = io();
+$(function (){
+        var socket = io();
         //database 점속 후 있는거 받아오기
 
         socket.on("addcomplain", function (data){
@@ -15,7 +14,5 @@ $(
            console.log($complain.val());
            socket.emit("addcomplain",{complaintext : $complain.val()});
            $complain = "";
-
         });
-    }
-)
+    });

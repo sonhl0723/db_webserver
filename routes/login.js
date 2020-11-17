@@ -12,7 +12,7 @@ router.post('/',function (req,res) {
     var userpwd = req.body.userpwd;
 
     var user = new Object(); // user 객체 생성
-    connection.query('SELECT * FROM customer natural join person WHERE login_id = ? AND login_pw = ?', [userid, userpwd], function (error, result, fields) {
+    connection.query('SELECT * FROM CUSTOMER natural join PERSON WHERE login_id = ? AND login_pw = ?', [userid, userpwd], function (error, result, fields) {
       if (error) {
         console.log(error);
         console.log("쿼리문 문제 ㅅㅂㅅㅂㅅㅂㅅㅂㅅㅂㅅㅂㅅㅂㅅㅂ");

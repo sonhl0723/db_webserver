@@ -28,17 +28,17 @@ router.post('/', function (req, res) {
     var apart_num = req.body.apart_num;
     var detail_address = req.body.detail_address;
   
-    var sql1 = 'INSERT INTO address(ZIP_CODE, ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, ADDRESS5) VALUES(?, ?, ?, ?, ?,?)';
+    var sql1 = 'INSERT INTO ADDRESS(ZIP_CODE, ADDRESS1, ADDRESS2, ADDRESS3, ADDRESS4, ADDRESS5) VALUES(?, ?, ?, ?, ?,?)';
     connection.query(sql1, [zip, add_city, add_state, street, apart_num, detail_address], function (error, rows, fields) {
       if (error) {
         console.log(error);
       } 
-      var sql2 = 'INSERT INTO person(KOR_FIRST_NAME, KOR_LAST_NAME, ENG_FIRST_NAME, ENG_LAST_NAME, PHONE_NUM, EMAIL, ADDRESS_ID, GENDER, BIRTH, NATION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+      var sql2 = 'INSERT INTO PERSON(KOR_FIRST_NAME, KOR_LAST_NAME, ENG_FIRST_NAME, ENG_LAST_NAME, PHONE_NUM, EMAIL, ADDRESS_ID, GENDER, BIRTH, NATION) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       connection.query(sql2, [korean_first, korean_last, english_first, english_last, phone_num, email, rows.insertId, gender, birth, nation], function (error, results, fields) {
         if (error) {
           console.log(error);
         }
-        var sql3 = 'INSERT INTO customer(PERSON_ID, PW_ANSWER, LOGIN_ID, LOGIN_PW) VALUES(?, ?, ?, ?)';
+        var sql3 = 'INSERT INTO CUSTOMER(PERSON_ID, PW_ANSWER, LOGIN_ID, LOGIN_PW) VALUES(?, ?, ?, ?)';
         connection.query(sql3, [results.insertId, forget_password, email, password], function (error, results, fields) {
           if (error) {
             console.log(error);
@@ -50,7 +50,7 @@ router.post('/', function (req, res) {
       console.log(rows);
     });
     console.log("가입성공");
-    res.render('../views/chanwoong/index', {title: 'Home' , cust_info:null});
+    res.redirect('/');
   });
   
 

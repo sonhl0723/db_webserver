@@ -86,7 +86,7 @@ CALL InsertRoom();
 
 -- facility_package 인스턴스 생성하는 쿼리문
 
-INSERT INTO facility_package VALUES(1, 300000, "Private Swimming Pool");
+INSERT INTO FACILITY_PACKAGE VALUES(1, 300000, "Private Swimming Pool");
 INSERT INTO facility_package VALUES(2, 500000, "Meeting Room");
 INSERT INTO facility_package VALUES(3, 1000000, "Banquet hall");
 INSERT INTO facility_package VALUES(4, 300000, "Private Bar");

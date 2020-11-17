@@ -2,6 +2,7 @@ var mysql      = require('mysql');
 
 var db_config = {
   host     : '175.114.185.102',
+  port     : '13333',
   user     : 'son',
   password : '1234',
   database : 'son'

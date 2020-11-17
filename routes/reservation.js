@@ -5,7 +5,7 @@ var connection = require('./db');
 var available_roomtypes = null;
 
 router.get('/', function(req, res, next) {
-    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:null,avail_roomtype:available_roomtypes});
+    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:null, avail_roomtype:available_roomtypes});
 });
 
 router.post('/', function (req, res) {
@@ -42,7 +42,7 @@ router.post('/', function (req, res) {
   
     var avail_types;
   
-    var sql1 = 'select * from room_type';
+    var sql1 = 'select * from ROOM_TYPE';
     connection.query(sql1, function (error, result, fields) {
       if (error) {
         console.log("여기는 왔냐?");
@@ -56,7 +56,7 @@ router.post('/', function (req, res) {
       }
       avail_types = x;
     })
-    var sql2 = 'SELECT count(reservation_id) as re,room_type FROM reservation natural join room_type where (CHECKIN_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') OR (CHECKOUT_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') group by room_type';
+    var sql2 = 'SELECT count(reservation_id) as re,room_type FROM RESERVATION natural join ROOM_TYPE where (CHECKIN_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') OR (CHECKOUT_DATE BETWEEN '+connection.escape(date_dpa)+' AND '+connection.escape(date_arr)+') group by room_type';
     connection.query(sql2, function (error, result, fields) {
       if (error) {
         console.log(error);
@@ -121,7 +121,6 @@ router.post('/', function (req, res) {
         avail_roomtype: available_roomtypes
       });
     });
-  
-  })
+});
   
 module.exports = router;

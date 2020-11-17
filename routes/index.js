@@ -85,6 +85,9 @@ router.get('/room', function(req, res, next) {
 router.get('/register',function(req,res, next){
   res.render('../views/chanwoong/register',{title:'Register', cust_info:cust_info});
 });
+router.get('/review', function(req,res, next) {
+  res.render('../views/chanwoong/review', { title: 'Review' , cust_info:cust_info});
+});
 
 router.post('/register', function (req, res) {
   var korean_first = req.body.korean_first;

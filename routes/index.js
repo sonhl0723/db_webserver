@@ -171,6 +171,11 @@ router.post('/search_room', function (req, res) {
 
     var avail_types;
 
+    var input_info = {ROOMTYPE : room,DATE_ARR : date_arr,DATE_DPAR : date_dpa,N_A : adult_num,N_C : child_num,N_B : baby_num};
+
+
+  //INPUT_INFO(ROOMTYPE,DATE_ARR,DATE_DPAR,N_A,N_C,N_B)
+
     var sql1 = 'select * from room_type';
     connection.query(sql1, function (error, result, fields) {
       if (error) {
@@ -248,7 +253,8 @@ router.post('/search_room', function (req, res) {
       res.render('../views/chanwoong/reservation', {
         title: 'Reservation',
         cust_info: cust_info,
-        avail_roomtype: available_roomtypes
+        avail_roomtype: available_roomtypes,
+        reservation_info: input_info
       });
     });
 

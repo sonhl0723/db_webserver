@@ -1,10 +1,10 @@
 var mysql      = require('mysql');
 
 var db_config = {
-  host     : 'us-cdbr-east-02.cleardb.com',
-  user     : 'b0d7db5a46255f',
-  password : 'e0ba2ce1',
-  database : 'heroku_a9f9515c41ce864'
+  host     : '175.114.185.102',
+  user     : 'son',
+  password : '1234',
+  database : 'son'
 };
 
 function handleDisconnect() {

@@ -74,9 +74,9 @@
                     </div>
                     <!-- 몇박몇일인지 계산 해주는 값 -->
 
-                    <div class="col-md-1"style="text-align:center;">>
+                    <div class="col-md-1"style="text-align:center;">
                         <div class="form-group">
-                            <label for="fname">숙박</label>
+                            <label for="fname">></label>
                             <input type="text" class="form-control" id="" name="" style="background:#ffffff";>
                         </div>
                     </div>
@@ -142,7 +142,34 @@
                 <hr style="width: 100%; background-color: #903479; height: 2px;">
             </form>
         </div>
-        <!--        </div>-->
+
+        <div class="row probootstrap-gutter40">
+            <div class="row">
+                <% if (avail_roomtype != null) { %>
+                <% for (var q of avail_roomtype)  { %>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="probootstrap-room">
+                        <a href="#"><img src="img/img_4.jpg" alt="Free Bootstrap Template by uicookies.com" class="img-responsive"></a>
+                        <div class="text">
+                            <h3><%= console.log(q.ROOMTYPE); %></h3>
+                            <p>Starting from <strong>$29.00/Night</strong></p>
+                            <div class="post-meta mb30">
+                                <ul>
+                                    <li><span class="review-rate">4.7</span> <i class="icon-star"></i> 252 Reviews</li>
+                                    <li><i class="icon-user2"></i> 3 Guests</li>
+                                </ul>
+                            </div>
+                            <p><a href="#" class="btn btn-primary" role="button">Reserve now for $29.00</a></p>
+                        </div>
+                    </div>
+                </div>
+                    <% } }else { %>
+                    <p></p>
+                <% }%>
+
+
+            </div>
+        </div>
     </div>
 </section>
 

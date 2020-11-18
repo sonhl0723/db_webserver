@@ -60,6 +60,12 @@ router.get('/room', function(req, res, next) {
 router.get('/register',function(req,res, next){
   res.render('../views/chanwoong/register',{title:'Register', cust_info:cust_info});
 });
+router.get('/help',function(req,res, next){
+  res.render('../views/chanwoong/help',{title:'Help', cust_info:cust_info});
+});
+router.get('/faq',function(req,res, next){
+  res.render('../views/chanwoong/faq',{title:'FAQ', cust_info:cust_info});
+});
 
 router.post('/register', function (req, res) {
   var korean_first = req.body.korean_first;

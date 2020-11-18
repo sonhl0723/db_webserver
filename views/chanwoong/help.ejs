@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database - Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:300,400,700|Rubik:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/help-table.css">
+    <link rel="stylesheet" href="/stylesheets/css2/styles-merged.css">
+    <link rel="stylesheet" href="/stylesheets/css2/style.min.css">
+    <link rel="stylesheet" href="/stylesheets/css2/custom.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<% include uppermenu_header.ejs %>
+
+<section class="probootstrap-slider flexslider probootstrap-inner">
+    <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg);" class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="probootstrap-slider-text text-center">
+                            <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+                            <h1 class="probootstrap-heading probootstrap-animate">Customer Service</h1>
+                            <div class="probootstrap-animate probootstrap-sub-wrap">Please write down your inquery. <p/> We will inform you of your inquiry by email.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <div class="col-md-8">
+                <h2 class="mt0" style="color:#6b265a;">Customer Inquery</h2>
+                <hr class="underhr" >
+                <table class="tableTypeA">
+                    <tr>
+                        <th><a style="color:red;">*</a> Title</th>
+                        <td><input type="text" name="title" style="width:60%"></td>
+                    </tr>
+                    <tr>
+                        <th><a style="color:red;">*</a> Contents</th>
+                        <td><textarea name="contents" rows="15" style="width:100%"></textarea></td>
+                    </tr>
+                    <tr>
+                        <th><a style="color:red;">*</a> Name(Eng·Kor)</th>
+                        <td>
+                            <select>
+                                <option value="Ms." selected>Ms.</option>
+                                <option value="Mr.">Mr.</option>
+                                <option value="Dr.">Dr.</option>
+                            </select>
+                            <input type="text" name="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><a style="color:red;">*</a> Email</th>
+                        <td><input type="text" name="email" style="width:60%"></td>
+                    </tr>
+                    <tr>
+                        <th><a style="color:red;">*</a> Phone Number</th>
+                        <td><input type="text" name="phone"></td>
+                    </tr>
+                </table>
+                <div class="form-group">
+                    <label>Agreement on the collection and utilization of essential personal information</label>
+                    <textarea readonly="readonly" rows="3" style="padding : 15px; width:100%;">Regarding customer inquiries and opinions, we agree to collect and use your personal information as shown below.
+
+Matters concerning the collection and use of essential personal information;
+①  Collection and use items | Name (English and Korean), e-mail, mobile phone
+②  Purpose of Collection and Use | Providing guidance and services for inquiries
+③  retention and use period | 5 years from the date of consent for collection and use
+※ You may refuse to agree to the above matters, but if you do not agree to do so, you may not be able to proceed with all the procedures related to the inquiry and service provision.
+                    </textarea><br>
+                    <input type="checkbox" name="agree" value="agree"> Agree<br>
+                </div>
+                <div class="form-group">
+                    <label>Consent to Optional Personal Information Collection and Utilization</label>
+                    <textarea readonly="readonly" rows="3" style="padding : 15px; width:100%;">Regarding customer inquiries and opinions, we agree to collect and use your personal information as shown below.
+
+Matters concerning the collection and use of selective personal information;
+①  Collection and Use Item | Home Phone
+②  Purpose of Collection and Use | Providing guidance and services for inquiries
+③  retention and use period | 5 years from the date of consent for collection and use
+※ You may refuse to agree to the above matters, but if you do not agree to do so, it may be impossible to proceed with general telephone guidance related to the inquiry and service provision.
+                    </textarea><br>
+                    <input type="checkbox" name="agree" value="agree"> Agree<br>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="submit">
+                </div>
+            </div>
+            <div class ="lnbMenu">
+                <h2 class="tit">Help</h2>
+                <hr class="underhr" >
+                <ul class="menu">
+                    <li class="m1 first">
+                        <a href="http://localhost:3000/help" class="on">
+                            <span>Customer Inquery</span>
+                        </a>
+                    </li>
+                    </p>
+                    <li class="m1 last">
+                        <a href="http://localhost:3000/faq">
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <div class="col-md-8">
+                <h2 class="mt0" style="color:#6b265a;">Contact Us</h2>
+                <hr class="underhr" >
+                <label>The HOTEL MANAGER</label>
+                <table class="tableTypeA">
+                    <tr>
+                        <th>General Manager</th>
+                        <td>
+                            <span>Hunting Line</span>
+                            <strong>010-2724-4636</strong>
+                        </td>
+                    </tr>
+                </table>
+                <label>The HOTEL DEPARTMENT</label>
+                <table class="tableTypeA">
+                    <tr>
+                        <th>Back Office</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-2145-1252</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-5345-8768</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Sales Marketing</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-5685-1576</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-3456-8768</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Front Office</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-6364-8458</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-5345-8342</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>House Keeping</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-2145-3474</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-9697-8768</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Fitness Club</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-2679-1256</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-5368-8046</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Kitchen</th>
+                        <td>
+                            <span>Hunting Line1</span>
+                            <strong>010-2389-1351</strong>
+                            <span>Hunting Line2</span>
+                            <strong>010-9457-8468</strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<% include footer.ejs %>
+
+<script src="js/scripts.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

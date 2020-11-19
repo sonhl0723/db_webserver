@@ -4,8 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// var connection = require('./routes/db');
+
+
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users');
+var reservRouter = require('./routes/reservation');
+var registerRouter = require('./routes/register');
+var logoutRouter = require('./routes/logout');
+var reviewRouter = require('./routes/review');
 
 var app = express();
 
@@ -13,19 +21,25 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser()); // 쿠키쿠키쿠키이용
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/logout', logoutRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/login',loginRouter);
+app.use('/reservation',reservRouter);
+app.use('/register',registerRouter);
+app.use('/review',reviewRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {

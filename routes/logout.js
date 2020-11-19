@@ -1,0 +1,12 @@
+var express = require('express');
+var router = express.Router();
+var connection = require('./db');
+
+/* GET home page. */
+router.get('/', function (req, res) {
+        res.clearCookie('customer_id');
+        res.clearCookie('customer_name');
+        res.redirect('/');
+});
+
+module.exports = router;

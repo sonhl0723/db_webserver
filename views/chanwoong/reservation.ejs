@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database - Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:300,400,700|Rubik:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css2/styles-merged.css">
+    <link rel="stylesheet" href="/stylesheets/css2/style.min.css">
+    <link rel="stylesheet" href="/stylesheets/css2/custom.css">
+    <link rel="stylesheet" href="/stylesheets/css2/reservation_custom.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<% include ./uppermenu_header.ejs %>
+
+<section class="probootstrap-slider flexslider probootstrap-inner">
+    <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg);" class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="probootstrap-slider-text text-center">
+                            <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+                            <h1 class="probootstrap-heading probootstrap-animate">Book A Room</h1>
+                            <div class="probootstrap-animate probootstrap-sub-wrap">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <h2 class="mt0 text-center">날짜,인원 선택</h2>
+            <hr style="width: 100%; background-color: #903479; height: 2px;">
+
+
+            <form action="/reservation" method="post" class="probootstrap-form ">
+
+                <div class="row" style="margin-left: 7%;">
+                    <div class="col-md-2">
+                        <div class="form-group" style="text-align:center;">
+                            <label for="room">Room</label>
+                            <div class="form-field">
+                                <i class="icon icon-chevron-down"></i>
+                                <select name="room" id="room" class="form-control" style="font-size: 14px; background:#ffffff">
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 0)) { %> selected <% } %>>Select a Room</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 1)) { %> selected <% } %>>STANDARD</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 2)) { %> selected <% } %>>DELUXE</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 3)) { %> selected <% } %>>PREMIUM</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 4)) { %> selected <% } %>>SUITE</option>
+                                    <option value="5" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 5)) { %> selected <% } %>>EXECUTIIVE_SUITE</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group" style="text-align:center;">
+                            <label for="date-arrival">체크인</label>
+                            <div class="form-field">
+                                <i class="icon icon-calendar2"></i>
+                                <input type="text" required class="form-control" id="date-arrival" name="datearr" style="background:#ffffff;" value=
+                                <%if (reservation_info != null) { %> <%=reservation_info.DATE_ARR%> <% } %>
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-group"style="text-align:center;">
+                            <label for="date-departure">체크아웃</label>
+                            <div class="form-field">
+                                <i class="icon icon-calendar2"></i>
+                                <input type="text" required class="form-control" id="date-departure" name="datedpar"style="background:#ffffff;" value=
+                                        <%if (reservation_info != null) { %> <%=reservation_info.DATE_DPAR%> <% } %>
+                                >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="width: 9%" style="text-align:center;">
+                        <div class="form-group">
+                            <label for="adults">성인</label>
+                            <div class="form-field">
+                                <i class="icon icon-chevron-down"></i>
+                                <select name="adults" required id="adults" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_A == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_A == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_A == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_A == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_A == 4)) { %> selected <% } %>>4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="width: 9%" style="text-align:center;">
+                        <div class="form-group">
+                            <label for="children">어린이</label>
+                            <div class="form-field">
+                                <i class="icon icon-chevron-down"></i>
+                                <select name="children" id="children" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_C == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_C == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_C == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_C == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_C == 4)) { %> selected <% } %>>4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-1" style="width: 9%">
+                        <div class="form-group"style="text-align:center;">
+                            <label for="adults">유아</label>
+                            <div class="form-field">
+                                <i class="icon icon-chevron-down"></i>
+                                <select name="babies" id="babies" class="form-control" style="padding-right:0; background:#ffffff">
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_B == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_B == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_B == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_B == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_B == 4)) { %> selected <% } %>>4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input style="margin-top: 1.9%; margin-left: 2%" type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Search">
+                    </div>
+                </div>
+                <hr style="width: 100%; background-color: #903479; height: 2px;">
+            </form>
+        </div>
+
+        <div class="row probootstrap-gutter40">
+            <div class="row">
+                <% if (avail_roomtype != null) { %>
+                <% for (var q of avail_roomtype)  { %>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="probootstrap-room">
+                        <a href="#"><img src=<% if(q.ROOM_TYPE.substring(0,5) == 'STAND'){ %>
+                            "img/standard.jpg"
+                        <%} else if(q.ROOM_TYPE.substring(0,5) == 'DELUX'){%>
+                            "img/deluxe.jpg"
+                        <%} else if(q.ROOM_TYPE.substring(0,5) == 'PREMI'){%>
+                            "img/premium.jpg"
+                        <%} else if(q.ROOM_TYPE.substring(0,5) == 'SUITE'){%>
+                            "img/suite.jpg"
+                        <%} else {%>
+                            "img/ex_suite.jpg"
+                        <%} %> class="img-responsive"></a>
+
+
+                        <div class="text">
+                            <h3><%= q.ROOM_TYPE %></h3>
+                            <p>Starting from <strong><%= q.PRICE %>원/Night</strong></p>
+                            <div class="post-meta mb30">
+                                <ul style="font-size: 1rem">
+                                    <li><i class="icon-user2"></i> 기본수용인원 : <%= q.CAPACITY_DEFAULT %> </li>
+                                    <li><i class="icon-user2"></i> 최대수용인원 : <%= q.CAPACITY_MAX %></li>
+                                </ul>
+                            </div>
+                            <p class="text-center"><a href="#" class="btn btn-primary" role="button" style="width: 40%">예약하기</a></p>
+                        </div>
+                    </div>
+                </div>
+                    <% } }else { %>
+                    <p></p>
+                <% }%>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-half">
+    <div class="image" style="background-image: url(img/slider_2.jpg);"></div>
+    <div class="text">
+        <div class="probootstrap-animate fadeInUp probootstrap-animated">
+            <h2 class="mt0">Best 5 Star hotel</h2>
+            <p><img src="img/curve_white.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                </div>
+            </div>
+            <p><a href="#" class="link-with-icon white">Learn More <i class=" icon-chevron-right"></i></a></p>
+        </div>
+    </div>
+</section>
+
+<% include ./footer.ejs %>
+
+<script src="js/scripts.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

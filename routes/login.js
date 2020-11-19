@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 var connection = require('./db');
 
-
 router.get('/', function(req, res, next) {
-  res.render('../views/chanwoong/login', { title: 'Login' , cust_info:null});
+  res.render('chanwoong/login', { title: 'Login' , cust_info:null});
 });
 
 router.post('/',function (req,res) {
@@ -26,8 +25,17 @@ router.post('/',function (req,res) {
         } else{
            console.log("로그인 성공!");
            user.customer_id = result[0]['CUSTOMER_ID'];
-           console.log(user);
-          //  req.session.customer_id = user.customer_id;
+           user.customer_name = result[0]['KOR_LAST_NAME'] + result[0]['KOR_FIRST_NAME'];
+           console.log(user.customer_id);
+
+           console.log("이거나오고 뒤에꺼가 안나온다 그거지??");
+           res.cookie('customer_id', user.customer_id,{
+            maxAge : 60*60*1000,
+           });
+           res.cookie('customer_name', user.customer_name,{
+            maxAge : 60*60*1000,
+           });
+           console.log("쿠키사용한다 싯팔" + req.cookies);
            res.redirect('/');
         }
       }

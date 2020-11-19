@@ -12,6 +12,8 @@ var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users');
 var reservRouter = require('./routes/reservation');
 var registerRouter = require('./routes/register');
+var logoutRouter = require('./routes/logout');
+
 
 var app = express();
 
@@ -19,12 +21,14 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser()); // 쿠키쿠키쿠키이용
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/logout', logoutRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);

@@ -3,26 +3,30 @@ var router = express.Router();
 var connection = require('./db');
 
 
+var sql = "SELECT * FROM COMPLAIN";
+var sql2 = "SELECT * FROM PERSON NATURAL JOIN EMPLOYEE WHERE EP_STATE = TRUE";
 
 
-//페이지를 열 때 이미 있는 컴플레인 정보를 넘겨줌
-router.post('/',function (req,res) {
-    var sql = "SELECT * FROM COMPLAIN";
-    var sql2 = "SELECT * FROM PERSON NATURAL JOIN EMPLOYEE WHERE EP_STATE = TRUE";
-    connection.query(sql, function (error, result, fields) {
-        if (error) {
-            console.log(error);
-        }
-        res.render('../views/chanwoong/test',{complain: result});
-    });
+var resultx;
+connection.query(sql, function (error, result, fields) {
+    if (error) {
+        console.log(error);
+    }
+    resultx =result;
 });
+
+
+router.get('/', function(req, res, next) {
+    res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:resultx});
+});
+
 
 
 //컴플레인을 추가할 때 호출
 router.post('/ADD',function (req,res) {
     var roomnum=req.body.ROOM_NUM;var description=req.body.content;var employee_id=null;var type=req.body.complain_type;var start_time;var fin_time=null;var priority=req.body.priority;
 
-    var sql = "INSERT INTO ADDRESS(ROOM_NUM,DESCRIPTION,EMPLOYEE_ID,TYPE,START_TIME,FIN_TIME,PRIORITY) VALUES(?, ?, ?, ?, ?,?,?)";
+    var sql = "INSERT INTO COMPLAIN(ROOM_NUM,DESCRIPTION,EMPLOYEE_ID,TYPE,START_TIME,FIN_TIME,PRIORITY) VALUES(?, ?, ?, ?, ?,?,?)";
     connection.query(sql,[roomnum,description,employee_id,type,start_time,fin_time,priority], function (error, result, fields) {
         if (error) {
             console.log(error);

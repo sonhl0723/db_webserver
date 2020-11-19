@@ -9,9 +9,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/complain', function(req, res, next) {
-  res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null});
-});
+
 
 
 module.exports = router;

@@ -4,11 +4,7 @@ var connection = require('./db');
 
 
 var sql = "SELECT * FROM COMPLAIN";
-var sql2 = "SELECT * FROM PERSON NATURAL JOIN EMPLOYEE WHERE EP_STATE = TRUE";
-
-
-
-//function으로 만들던지 해서 get method 호출 시마다 resultx의 갱신이 필요
+// function으로 만들던지 해서 get method 호출 시마다 resultx의 갱신이 필요
 var resultx;
 connection.query(sql, function (error, result, fields) {
     if (error) {
@@ -19,9 +15,17 @@ connection.query(sql, function (error, result, fields) {
 
 
 router.get('/', function(req, res, next) {
+    // var sql = "SELECT * FROM COMPLAIN";
+    // connection.query(sql, function (error, result, fields) {
+    //     if (error) {
+    //         console.log(error);
+    //     }
+    //     var fucking = JSON.parse(JSON.stringify(result));
+    //     res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:fucking});
+    // });
     res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:resultx});
-});
 
+});
 
 
 //컴플레인을 추가할 때 호출

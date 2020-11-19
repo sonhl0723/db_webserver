@@ -3,28 +3,17 @@ var router = express.Router();
 var connection = require('./db');
 
 
-var sql = "SELECT * FROM COMPLAIN";
-// function으로 만들던지 해서 get method 호출 시마다 resultx의 갱신이 필요
-var resultx;
-connection.query(sql, function (error, result, fields) {
-    if (error) {
-        console.log(error);
-    }
-    resultx =result;
-});
 
 
 router.get('/', function(req, res, next) {
-    // var sql = "SELECT * FROM COMPLAIN";
-    // connection.query(sql, function (error, result, fields) {
-    //     if (error) {
-    //         console.log(error);
-    //     }
-    //     var fucking = JSON.parse(JSON.stringify(result));
-    //     res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:fucking});
-    // });
-    res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:resultx});
-
+    var sql = "SELECT * FROM COMPLAIN";
+    connection.query(sql, function (error, result, fields) {
+        if (error) {
+            console.log(error);
+        }
+        var fucking = JSON.parse(JSON.stringify(result));
+        res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:fucking});
+    });
 });
 
 

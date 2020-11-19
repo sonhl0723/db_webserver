@@ -12,10 +12,14 @@ var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users');
 var reservRouter = require('./routes/reservation');
 var registerRouter = require('./routes/register');
+<<<<<<< HEAD
 var logoutRouter = require('./routes/logout');
+=======
+>>>>>>> 602193d5d80e5c84c2874364299e4007ac3e7a96
 var helpRouter = require('./routes/help');
 var faqRouter = require('./routes/faq');
 var reviewRouter = require('./routes/review');
+
 
 var app = express();
 

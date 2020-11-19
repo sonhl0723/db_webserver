@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/room', function(req, res, next) {
-  res.render('../views/chanwoong/room', { title: 'Room' , cust_info:null});
+router.get('/complain', function(req, res, next) {
+  res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null});
 });
 
 

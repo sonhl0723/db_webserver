@@ -13,7 +13,8 @@ router.post('/',function (req,res) {
         if (error) {
             console.log(error);
         }
-        res.render('../views/chanwoong/test',{complain: result});
+        console.log(result);
+        res.render('../views/chanwoong/complain',{complain: result});
     });
 });
 

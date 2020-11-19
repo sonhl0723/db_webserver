@@ -53,12 +53,12 @@
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
                                 <select name="room" id="room" class="form-control" style="font-size: 14px; background:#ffffff">
-                                    <option value="0">Select a Room</option>
-                                    <option value="1">STANDARD</option>
-                                    <option value="2">DELUXE</option>
-                                    <option value="3">PREMIUM</option>
-                                    <option value="4">SUITE</option>
-                                    <option value="5">EXECUTIVE_SUITE</option>
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 0)) { %> selected <% } %>>Select a Room</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 1)) { %> selected <% } %>>STANDARD</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 2)) { %> selected <% } %>>DELUXE</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 3)) { %> selected <% } %>>PREMIUM</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 4)) { %> selected <% } %>>SUITE</option>
+                                    <option value="5" <% if ((reservation_info != null) && (reservation_info.ROOMTYPE == 5)) { %> selected <% } %>>EXECUTIIVE_SUITE</option>
                                 </select>
                             </div>
                         </div>
@@ -68,7 +68,9 @@
                             <label for="date-arrival">체크인</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" required class="form-control" id="date-arrival" name="datearr" style="background:#ffffff;">
+                                <input type="text" required class="form-control" id="date-arrival" name="datearr" style="background:#ffffff;" value=
+                                <%if (reservation_info != null) { %> <%=reservation_info.DATE_ARR%> <% } %>
+                                >
                             </div>
                         </div>
                     </div>
@@ -78,7 +80,9 @@
                             <label for="date-departure">체크아웃</label>
                             <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" required class="form-control" id="date-departure" name="datedpar"style="background:#ffffff;">
+                                <input type="text" required class="form-control" id="date-departure" name="datedpar"style="background:#ffffff;" value=
+                                        <%if (reservation_info != null) { %> <%=reservation_info.DATE_DPAR%> <% } %>
+                                >
                             </div>
                         </div>
                     </div>
@@ -88,11 +92,11 @@
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
                                 <select name="adults" required id="adults" class="form-control" style="padding-right:0; background:#ffffff">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_A == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_A == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_A == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_A == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_A == 4)) { %> selected <% } %>>4</option>
                                 </select>
                             </div>
                         </div>
@@ -103,11 +107,11 @@
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
                                 <select name="children" id="children" class="form-control" style="padding-right:0; background:#ffffff">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_C == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_C == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_C == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_C == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_C == 4)) { %> selected <% } %>>4</option>
                                 </select>
                             </div>
                         </div>
@@ -118,11 +122,11 @@
                             <div class="form-field">
                                 <i class="icon icon-chevron-down"></i>
                                 <select name="babies" id="babies" class="form-control" style="padding-right:0; background:#ffffff">
-                                    <option value="0">0</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
+                                    <option value="0" <% if ((reservation_info != null) && (reservation_info.N_B == 0)) { %> selected <% } %>>0</option>
+                                    <option value="1" <% if ((reservation_info != null) && (reservation_info.N_B == 1)) { %> selected <% } %>>1</option>
+                                    <option value="2" <% if ((reservation_info != null) && (reservation_info.N_B == 2)) { %> selected <% } %>>2</option>
+                                    <option value="3" <% if ((reservation_info != null) && (reservation_info.N_B == 3)) { %> selected <% } %>>3</option>
+                                    <option value="4" <% if ((reservation_info != null) && (reservation_info.N_B == 4)) { %> selected <% } %>>4</option>
                                 </select>
                             </div>
                         </div>

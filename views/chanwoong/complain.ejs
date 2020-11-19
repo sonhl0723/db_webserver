@@ -27,7 +27,7 @@
                     <div class="col-md-10 col-md-offset-1">
                         <div class="probootstrap-slider-text text-center">
                             <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
-                            <h1 class="probootstrap-heading probootstrap-animate">Real Time Room</h1>
+                            <h1 class="probootstrap-heading probootstrap-animate">Complain</h1>
                             <div class="probootstrap-animate probootstrap-sub-wrap">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="Room_num">방 번호</label>
-                                <input type="text" class="form-control" id="Room_num" name="Room_num">
+                                <input type="text" class="form-control" id="Room_num" name="Room_num" style="border:0px; border-bottom: 1px solid;">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -55,12 +55,11 @@
                                 <label for="complain_type">민원 타입</label>
                                     <div class="form-field">
                                         <i class="icon icon-mail"></i>
-                                        <select id="complain_type" name="complain_type" class="form-control">
+                                        <select id="complain_type" name="complain_type" class="form-control" style="border:0px; border-bottom: 1px solid;">
                                             <option value="">Complain Type</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4+</option>
+                                            <option value="AMENITY">Amenity</option>
+                                            <option value="COMPLAIN">Complain</option>
+                                            <option value="PRIMARY">Primary</option>
                                         </select>
                                     </div>
                             </div>
@@ -70,7 +69,7 @@
                                 <label for="priority">우선순위</label>
                                 <div class="form-field">
                                     <i class="icon icon-mail"></i>
-                                    <select id="priority" name="priority" class="form-control">
+                                    <select id="priority" name="priority" class="form-control" style="border:0px; border-bottom: 1px solid;">
                                         <option value="0">Priority</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -91,7 +90,7 @@
                             <div class="form-group">
                                 <label for="content">내용</label>
                                 <div class="form-field">
-                                    <textarea placeholder="불만사항을 적어주세요" rows="7" class="form-control" id="content" name="content"></textarea>
+                                    <textarea placeholder="불만사항을 적어주세요" rows="7" class="form-control" id="content" name="content" style="border:0px; border-bottom: 1px solid;"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -110,6 +109,45 @@
 
 <section id="complain_list">
     <div class="container">
+        <% if (complain != null) { %>
+            <% for (var q of complain)  { %>
+            <hr style="border: solid 0.5px">
+            <div class="row">
+                <div class="probootstrap-gutter40">
+                    <div class="col-sm-3" style="border-radius: 20px; background-color:
+                    <% if (q.FIN_TIME != null) { %>
+                            mediumspringgreen;
+                            <% } else { %>
+                            pink
+                            <% } %>
+                            ;">
+
+                        <div class="review-block-name"><a href="#"><%=q.ROOM_NUM%></a></div>
+                        <div class="review-block-room"><p>EMPLOYEE ID: <%=q.EMPLOYEE_ID%></p></div>
+                        <div class="review-block-room"><p>EMPLOYEE NAME: <%=q.ENG_LAST_NAME +" "+ q.ENG_FIRST_NAME%></p></div>
+                        <div class="review-block-room"><p>PRIORITY: <%=q.PRIORITY%></p></div>
+                        <div class="rating-selected" style="margin-left: 30%;">
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="review-block-title"><p>TYPE: <%=q.TYPE%></p></div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group text-center" style="margin-top: 5%;">
+                                    <% if (q.FIN_TIME == null) { %> <input style="background-color: pink; border: 0px; color: #903479;" type="submit" class="btn btn-primary btn-md" id="submit" name="submit" value="민원 해결"> <% }%>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-block-description"><%=q.DESCRIPTION%></div>
+                        <div class="review-block-description text-right" style="font-size: 14px;"><%=q.START_TIME%></div>
+                        <div class="review-block-description text-right" style="font-size: 14px;"><%=q.FIN_TIME%></div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+        <% } } %>
     </div>
 </section>
 

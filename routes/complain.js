@@ -3,7 +3,7 @@ var router = express.Router();
 var connection = require('./db');
 
 
-var sql = "SELECT * FROM COMPLAIN";
+var sql = "SELECT * FROM COMPLAIN NATURAL JOIN EMPLOYEE NATURAL JOIN PERSON";
 var sql2 = "SELECT * FROM PERSON NATURAL JOIN EMPLOYEE WHERE EP_STATE = TRUE";
 
 

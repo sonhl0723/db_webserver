@@ -79,7 +79,7 @@
                         </div>
                         <div class="col-md-3">
                             <div class="form-group" style="padding-left: 10%; padding-top: 13%;">
-                                <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="submit">
+                                <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="submit" style="border-radius: 10px;">
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@
                 <br><br><br><br>
                 <h2 class="mt0">Allocate</h2>
                 <p>배정할 직원을 선택해주세요.</p>
-                <p><a href="#" class="btn btn-primary" role="button">직원 배정</a></p>
+                <p><a href="#" class="btn btn-primary" role="button" style="border-radius: 15px;">직원 배정</a></p>
             </div>
         </div>
     </div>
@@ -122,9 +122,9 @@
                             <% } %>
                             ;">
 
-                        <div class="review-block-name"><a href="#"><%=q.ROOM_NUM%></a></div>
-                        <div class="review-block-room"><p>EMPLOYEE ID: <%=q.EMPLOYEE_ID%></p></div>
-                        <div class="review-block-room"><p>EMPLOYEE NAME: <%=q.ENG_LAST_NAME +" "+ q.ENG_FIRST_NAME%></p></div>
+                        <div class="review-block-name"><a href="#">객실 번호 : <%=q.ROOM_NUM%></a></div>
+                        <div class="review-block-room"><p>직원 ID: <%=q.EMPLOYEE_ID%></p></div>
+                        <div class="review-block-room"><p>직원 이름: <%=q.ENG_LAST_NAME +" "+ q.ENG_FIRST_NAME%></p></div>
                         <div class="review-block-room"><p>PRIORITY: <%=q.PRIORITY%></p></div>
                         <div class="rating-selected" style="margin-left: 30%;">
                         </div>
@@ -132,7 +132,7 @@
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-9">
-                                <div class="review-block-title"><p>TYPE: <%=q.TYPE%></p></div>
+                                <div class="review-block-title"><p>타입 : <%=q.TYPE%></p></div>
                             </div>
                             <div class="col-sm-3">
                                 <div class="form-group text-center" style="margin-top: 5%;">

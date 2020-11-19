@@ -13,5 +13,4 @@ router.get('/room', function(req, res, next) {
   res.render('../views/chanwoong/room', { title: 'Room' , cust_info:null});
 });
 
-
 module.exports = router;

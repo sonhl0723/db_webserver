@@ -6,7 +6,12 @@ var available_roomtypes = null;
 var input_info = null;
 
 router.get('/', function(req, res, next) {
+  if(!req.cookies['customer_id']){
     res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:null, avail_roomtype:available_roomtypes,reservation_info:input_info});
+  } else {
+    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:req.cookies['customer_id'], avail_roomtype:available_roomtypes,reservation_info:input_info});
+  }
+    
 });
 
 router.post('/', function (req, res) {
@@ -116,14 +121,22 @@ router.post('/', function (req, res) {
         if (myres.length == 0) myres = null;
         available_roomtypes = myres;
       }
-
-      res.render('../views/chanwoong/reservation', {
-        title: 'Reservation',
-        cust_info: null,
-        avail_roomtype: available_roomtypes,
+      
+      if(!req.cookies['customer_id']){
+        res.render('../views/chanwoong/reservation', {
+          title: 'Reservation',
+          cust_info: null,
+          avail_roomtype: available_roomtypes,
           reservation_info: input_info
-
-      });
+        });
+      } else {
+        res.render('../views/chanwoong/reservation', {
+          title: 'Reservation',
+          cust_info: req.cookies['customer_id'],
+          avail_roomtype: available_roomtypes,
+          reservation_info: input_info
+        });
+      }
     });
 });
   

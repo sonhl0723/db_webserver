@@ -3,23 +3,16 @@ var router = express.Router();
 var connection = require('./db');
 
 
-var sql = "SELECT * FROM COMPLAIN NATURAL JOIN EMPLOYEE NATURAL JOIN PERSON";
-var sql2 = "SELECT * FROM PERSON NATURAL JOIN EMPLOYEE WHERE EP_STATE = TRUE";
-
-
-var resultx;
-connection.query(sql, function (error, result, fields) {
-    if (error) {
-        console.log(error);
-    }
-    resultx =result;
-});
-
-
 router.get('/', function(req, res, next) {
-    res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:resultx});
+    var sql = "SELECT * FROM COMPLAIN NATURAL JOIN EMPLOYEE NATURAL JOIN PERSON";
+    connection.query(sql, function (error, result, fields) {
+        if (error) {
+            console.log(error);
+        }
+        var fucking = JSON.parse(JSON.stringify(result));
+        res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:fucking});
+    });
 });
-
 
 
 //컴플레인을 추가할 때 호출

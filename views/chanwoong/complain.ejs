@@ -109,12 +109,13 @@
 
 <section id="complain_list">
     <div class="container">
+        <h1 class="probootstrap-heading probootstrap-animate">Complain List</h1>
         <% if (complain != null) { %>
             <% for (var q of complain)  { %>
             <hr style="border: solid 0.5px">
             <div class="row">
                 <div class="probootstrap-gutter40">
-                    <div class="col-sm-3" style="border-radius: 20px; background-color:
+                    <div class="col-sm-3" style="border-radius: 20px; padding: 3% 2%; background-color:
                     <% if (q.FIN_TIME != null) { %>
                             mediumspringgreen;
                             <% } else { %>
@@ -122,10 +123,10 @@
                             <% } %>
                             ;">
 
-                        <div class="review-block-name"><a href="#">객실 번호 : <%=q.ROOM_NUM%></a></div>
-                        <div class="review-block-room"><p>직원 ID: <%=q.EMPLOYEE_ID%></p></div>
-                        <div class="review-block-room"><p>직원 이름: <%=q.ENG_LAST_NAME +" "+ q.ENG_FIRST_NAME%></p></div>
-                        <div class="review-block-room"><p>PRIORITY: <%=q.PRIORITY%></p></div>
+                        <div class="review-block-name"><a href="#"><strong>객실 번호 : <%=q.ROOM_NUM%></strong></a></div>
+                        <div class="review-block-room"><strong>직원 ID : <%=q.EMPLOYEE_ID%></strong></div>
+                        <div class="review-block-room"><strong>담당 직원 : <%=q.ENG_LAST_NAME +" "+ q.ENG_FIRST_NAME%></strong></div>
+                        <div class="review-block-room"><strong>우선 순위 : <%=q.PRIORITY%></strong></div>
                         <div class="rating-selected" style="margin-left: 30%;">
                         </div>
                     </div>
@@ -135,14 +136,14 @@
                                 <div class="review-block-title"><p>타입 : <%=q.TYPE%></p></div>
                             </div>
                             <div class="col-sm-3">
-                                <div class="form-group text-center" style="margin-top: 5%;">
-                                    <% if (q.FIN_TIME == null) { %> <input style="background-color: pink; border: 0px; color: #903479;" type="submit" class="btn btn-primary btn-md" id="submit" name="submit" value="민원 해결"> <% }%>
+                                <div class="form-group text-right" style="margin-top: 10%;">
+                                    <% if (q.FIN_TIME == null) { %> <input  type="submit" class="btn btn-primary btn-md" id="submit" name="submit" value="민원 해결"> <% }else { %><strong style="color: #903479; font-size: 2rem;">처리완료</strong> <% } %>
                                 </div>
                             </div>
                         </div>
                         <div class="review-block-description"><%=q.DESCRIPTION%></div>
-                        <div class="review-block-description text-right" style="font-size: 14px;"><%=q.START_TIME%></div>
-                        <div class="review-block-description text-right" style="font-size: 14px;"><%=q.FIN_TIME%></div>
+                        <div class="review-block-description text-right" style="font-size: 14px;"><p>발생 시간 : <%=q.START_TIME%></p></div>
+                        <div class="review-block-description text-right" style="font-size: 14px;"><p>종료 시간 : <%=q.FIN_TIME%></p></div>
                     </div>
                 </div>
             </div>

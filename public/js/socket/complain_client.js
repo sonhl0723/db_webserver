@@ -11,8 +11,6 @@ $(function (){
         $("#myform").submit(function(e){
            e.preventDefault();
            var $complain = $("#complain");
-           console.log("===================================================");
-           console.log($complain.val());
            socket.emit("addcomplain",{complaintext : $complain.val()});
            $complain.val("");
         });

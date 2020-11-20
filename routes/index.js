@@ -25,4 +25,13 @@ router.get('/room', function(req, res, next) {
   }
 });
 
+router.get('/booking', function(req, res, next) {
+    res.render('../views/chanwoong/booking', { title: 'Booking' , cust_info:null});
+    if(!req.cookies['customer_id']){
+
+    } else {
+
+    }
+});
+
 module.exports = router;

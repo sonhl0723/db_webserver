@@ -15,9 +15,24 @@ tr {
     border-collapse: collapse;
     table-layout: fixed;
 }
+.middlebar{
+    border:0px;
+    margin:0px;
+    height:0px;
+}
+.middlebar h3{
+    border:0px;
+    margin:0px;
+    height:0px;
+}
 .underhr{
     border:0px;
     height:5px;
+    background: #3B3B25;
+}
+.middlehr{
+    margin-top: 50px;
+    height:2px;
     background: #3B3B25;
 }
 .tableTypeA th {
@@ -139,6 +154,16 @@ a:-webkit-any-link {
     display: inline-block;
     zoom: 1;
 }
+.faqList ul li .fTit .precaution {
+    float: left;
+    font-size : 1.2em;
+    color: #666;
+    padding: 23px;
+
+    text-align: center;
+    display: inline-block;
+    zoom: 1;
+}
 .faqList ul li .fTit .tit {
     float: left;
     color: #707070;
@@ -156,6 +181,17 @@ em {
     border-bottom: #ccc solid 1px;
     border-top: #ccc solid 1px;
     padding: 10px 25px 10px 156px;
+    background: #fff;
+    line-height: 160%;
+    color: #1b1b1b;
+}
+.faqList ul li .msg2 {
+    text-align: left;
+    margin: 0;
+    position: relative;
+    border-bottom: #ccc solid 1px;
+    border-top: #ccc solid 1px;
+    padding: 10px 25px 10px 40px;
     background: #fff;
     line-height: 160%;
     color: #1b1b1b;

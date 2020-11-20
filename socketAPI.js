@@ -24,8 +24,6 @@ io.on('connection', function (socket){
                 console.log(error);
             }
         });
-        console.log("server-0=-=--=-==-=-=-=343-49238509234852304758234758907423759340");
-
         io.emit('addcomplain',data);
     });
 });

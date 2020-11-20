@@ -37,7 +37,7 @@ router.post('/',function (req,res) {
             res.cookie('customer_name', user.customer_name,{
               maxAge : 60*60*1000,
             });
-            console.log("쿠키사용한다 싯팔" + req.cookies);
+            // console.log("쿠키사용한다 싯팔" + req.cookies);
             res.redirect('/');
           }
         }
@@ -67,7 +67,7 @@ router.post('/',function (req,res) {
           res.cookie('employee_name', employee.emp_name,{
             maxAge : 60*60*1000,
           });
-          console.log("쿠키사용한다 싯팔" + req.cookies);
+          // console.log("쿠키사용한다 싯팔" + req.cookies);
           res.redirect('/');
         }
       }

@@ -3,15 +3,21 @@ var router = express.Router();
 var connection = require('./db');
 
 var available_roomtypes = null;
+var input_info = null;
 
 router.get('/', function(req, res, next) {
-    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:null, avail_roomtype:available_roomtypes});
+  if(!req.cookies['customer_id']){
+    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:null, avail_roomtype:available_roomtypes,reservation_info:input_info});
+  } else {
+    res.render('../views/chanwoong/reservation', { title: 'Reservation', cust_info:req.cookies['customer_id'], avail_roomtype:available_roomtypes,reservation_info:input_info});
+  }
+    
 });
 
 router.post('/', function (req, res) {
     var room = Number(req.body.room);
-    var date_arrival = req.body.datedpar;
-    var date_departure = req.body.datearr;
+    var date_arrival = req.body.datearr;
+    var date_departure = req.body.datedpar;
     var adult_num = Number(req.body.adults);
     var child_num = Number(req.body.children);
     var baby_num = Number(req.body.babies);
@@ -41,6 +47,7 @@ router.post('/', function (req, res) {
     }var date_dpa=c+"-"+a+"-"+b+" 00:00:00";
   
     var avail_types;
+    input_info = {"ROOMTYPE" : room,"DATE_ARR" : date_arr,"DATE_DPAR" : date_dpa,"N_A" : adult_num,"N_C" : child_num,"N_B" : baby_num};
   
     var sql1 = 'select * from ROOM_TYPE';
     connection.query(sql1, function (error, result, fields) {
@@ -114,12 +121,22 @@ router.post('/', function (req, res) {
         if (myres.length == 0) myres = null;
         available_roomtypes = myres;
       }
-
-      res.render('../views/chanwoong/reservation', {
-        title: 'Reservation',
-        cust_info: null,
-        avail_roomtype: available_roomtypes
-      });
+      
+      if(!req.cookies['customer_id']){
+        res.render('../views/chanwoong/reservation', {
+          title: 'Reservation',
+          cust_info: null,
+          avail_roomtype: available_roomtypes,
+          reservation_info: input_info
+        });
+      } else {
+        res.render('../views/chanwoong/reservation', {
+          title: 'Reservation',
+          cust_info: req.cookies['customer_id'],
+          avail_roomtype: available_roomtypes,
+          reservation_info: input_info
+        });
+      }
     });
 });
   

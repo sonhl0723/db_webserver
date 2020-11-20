@@ -4,26 +4,13 @@ var connection = require('./db');
 
 
 router.get('/', function(req, res, next) {
-    var sql = "SELECT * FROM COMPLAIN NATURAL JOIN EMPLOYEE NATURAL JOIN PERSON";
+    var sql = "SELECT * FROM COMPLAIN AS C LEFT JOIN EMPLOYEE AS E ON C.EMPLOYEE_ID=E.EMPLOYEE_ID LEFT JOIN PERSON AS P ON P.PERSON_ID=E.PERSON_ID";
     connection.query(sql, function (error, result, fields) {
         if (error) {
             console.log(error);
         }
         var fucking = JSON.parse(JSON.stringify(result));
         res.render('../views/chanwoong/complain', { title: 'Complain' , cust_info:null,complain:fucking});
-    });
-});
-
-
-//컴플레인을 추가할 때 호출
-router.post('/ADD',function (req,res) {
-    var roomnum=req.body.ROOM_NUM;var description=req.body.content;var employee_id=null;var type=req.body.complain_type;var start_time;var fin_time=null;var priority=req.body.priority;
-
-    var sql = "INSERT INTO COMPLAIN(ROOM_NUM,DESCRIPTION,EMPLOYEE_ID,TYPE,START_TIME,FIN_TIME,PRIORITY) VALUES(?, ?, ?, ?, ?,?,?)";
-    connection.query(sql,[roomnum,description,employee_id,type,start_time,fin_time,priority], function (error, result, fields) {
-        if (error) {
-            console.log(error);
-        }
     });
 });
 

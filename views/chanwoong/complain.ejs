@@ -42,12 +42,12 @@
         <div class="row probootstrap-gutter40">
             <div class="col-md-8">
                 <h1 class="probootstrap-heading probootstrap-animate">Complain</h1>
-                <form action="/ADD" method="post" class="probootstrap-form">
+                <form id=complain_socket class="probootstrap-form">
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="Room_num">방 번호</label>
-                                <input type="text" class="form-control" id="Room_num" name="Room_num" style="border:0px; border-bottom: 1px solid;">
+                                <input type="text" class="form-control" id="roomnum" name="Room_num" style="border:0px; border-bottom: 1px solid;">
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -56,10 +56,10 @@
                                     <div class="form-field">
                                         <i class="icon icon-mail"></i>
                                         <select id="complain_type" name="complain_type" class="form-control" style="border:0px; border-bottom: 1px solid;">
-                                            <option value="">Complain Type</option>
-                                            <option value="AMENITY">Amenity</option>
-                                            <option value="COMPLAIN">Complain</option>
-                                            <option value="PRIMARY">Primary</option>
+                                            <option value=''>Complain Type</option>
+                                            <option value='AMENITY'>Amenity</option>
+                                            <option value='COMPLAIN'>Complain</option>
+                                            <option value='PRIMARY'>Primary</option>
                                         </select>
                                     </div>
                             </div>
@@ -69,7 +69,7 @@
                                 <label for="priority">우선순위</label>
                                 <div class="form-field">
                                     <i class="icon icon-mail"></i>
-                                    <select id="priority" name="priority" class="form-control" style="border:0px; border-bottom: 1px solid;">
+                                    <select id="priorityx" name="priorityx" class="form-control" style="border:0px; border-bottom: 1px solid;">
                                         <option value="0">Priority</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
@@ -90,7 +90,7 @@
                             <div class="form-group">
                                 <label for="content">내용</label>
                                 <div class="form-field">
-                                    <textarea placeholder="불만사항을 적어주세요" rows="7" class="form-control" id="content" name="content" style="border:0px; border-bottom: 1px solid;"></textarea>
+                                    <textarea placeholder="불만사항을 적어주세요" rows="7" class="form-control" id="contentx" name="contentx" style="border:0px; border-bottom: 1px solid;"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -117,9 +117,9 @@
                 <div class="probootstrap-gutter40">
                     <div class="col-sm-3" style="border-radius: 20px; padding: 3% 2%; background-color:
                     <% if (q.FIN_TIME != null) { %>
-                            mediumspringgreen;
+                            mediumspringgreen
                             <% } else { %>
-                            pink
+                                pink
                             <% } %>
                             ;">
 
@@ -176,7 +176,9 @@
 <script src="js/scripts.min.js"></script>
 <script src="js/main.min.js"></script>
 <script src="js/custom.js"></script>
-
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src = "/socket.io/socket.io.js"></script>
+<script src = '/js/socket/complain_client.js'></script>
 
 </body>
 </html>

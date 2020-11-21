@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="/stylesheets/css2/staff.css">
 
     <script src="js/staff.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $('.trigger').on('click', function() {
+                $('.modal-wrapper').toggleClass('open');
+                $('.page-wrapper').toggleClass('blur-it');
+                return false;
+            });
+        });
+    </script>
     <!--[if lt IE 9]>
     <script src="js/vendor/html5shiv.min.js"></script>
     <script src="js/vendor/respond.min.js"></script>
@@ -57,76 +66,65 @@
                             <th>Name</th>						
                             <th>Join Date</th>
                             <th>Department</th>
+                            <th>Position</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>dd</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td><a href="#">Michael Holz</a></td>
-                            <td>04/10/2013</td>                        
-                            <td>Admin</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
+                            <td>1</td>  <!-- staff_id -->
+                            <td><a href="#">Michael Holz</a></td>   <!-- staff_name -->
+                            <td>04/10/2013</td> <!-- join_date -->              
+                            <td>A</td>
+                            <td>High</td>
+                            <td class="probootstrap-form">
+                                <select class="form-control" id="status" style="font-size: 14px; background:#ffffff">
+                                    <option value="1">대기</option>
+                                    <option value="2">활동중</option>
+                                    <option value="3">자리비움</option>
+                                </select>
+                            </td>
                             <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+                                <label for="modal-btn"> More <i class="uil uil-expand-arrows"></i></label> 
+                                <div class="modal">
+                                    <div class="modal-wrap" style="text-align: center;">
+                                        <h3 style="margin-top: 10px;">staff_name</h3>
+                                        <div>Salary : </div>
+                                        <div>Address : </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
                             <td><a href="#">Paula Wilson</a></td>
                             <td>05/08/2014</td>                       
-                            <td>Publisher</td>
+                            <td>B</td>
+                            <td>Low</td>
                             <td class="probootstrap-form">
-                                <select class="form-control" style="font-size: 14px; background:#ffffff">
-                                    <option class="status text-success">Active</option>
-                                    <option class="status text-dange">Danger</option>
-                                    <option class="status text-warning">Warning</option>
+                                <select class="form-control" id="status" style="font-size: 14px; background:#ffffff">
+                                    <option value="1">대기</option>
+                                    <option value="2">활동중</option>
+                                    <option value="3">자리비움</option>
                                 </select>
                             </td>
-                            <!-- <td><span class="status text-success">&bull;</span> Active</td> -->
                             <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td><a href="#">Antonio Moreno</a></td>
-                            <td>11/05/2015</td>
-                            <td>Publisher</td>
-                            <td><span class="status text-danger">&bull;</span> Suspended</td>                        
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>                        
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td><a href="#">Mary Saveley</a></td>
-                            <td>06/09/2016</td>
-                            <td>Reviewer</td>
-                            <td><span class="status text-success">&bull;</span> Active</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td><a href="#">Martin Sommer</a></td>
-                            <td>12/08/2017</td>                        
-                            <td>Moderator</td>
-                            <td><span class="status text-warning">&bull;</span> Inactive</td>
-                            <td>
-                                <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                                <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+                                <label for="modal-btn"> More <i class="uil uil-expand-arrows"></i></label> 
+                                <div class="modal">
+                                    <div class="modal-wrap" style="text-align: center;">
+                                        <h3 style="margin-top: 10px;">staff_name</h3>
+                                        <div>Salary : </div>
+                                        <div>Address : </div>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="clearfix">
+                <!-- <div class="clearfix">
                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                     <ul class="pagination">
                         <li class="page-item disabled"><a href="#">Previous</a></li>
@@ -137,7 +135,7 @@
                         <li class="page-item"><a href="#" class="page-link">5</a></li>
                         <li class="page-item"><a href="#" class="page-link">Next</a></li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>     

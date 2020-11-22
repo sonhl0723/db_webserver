@@ -49,7 +49,7 @@ CREATE TABLE PERSON
     `PHONE_NUM`       VARCHAR(45)    NOT NULL    COMMENT '핸드폰전화번호', 
     `EMAIL`           VARCHAR(45)    NOT NULL    COMMENT '이메일', 
     `ADDRESS_ID`      INT            NULL        COMMENT '주소',
-    `GENDER`          ENUM('FEMALE','MALE')           NOT NULL    COMMENT '성', 
+    `GENDER`          ENUM('MALE','FEMALE')           NOT NULL    COMMENT '성', 
     `BIRTH`           DATE           NOT NULL    COMMENT '생일', 
     `NATION`          VARCHAR(45)    NULL        COMMENT '국적', 
     PRIMARY KEY (PERSON_ID)

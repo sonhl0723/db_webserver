@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database - Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:300,400,700|Rubik:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/help-table.css">
+    <link rel="stylesheet" href="/stylesheets/css2/styles-merged.css">
+    <link rel="stylesheet" href="/stylesheets/css2/style.min.css">
+    <link rel="stylesheet" href="/stylesheets/css2/custom.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<% include uppermenu_header.ejs %>
+
+<section class="probootstrap-slider flexslider probootstrap-inner">
+    <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg);" class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="probootstrap-slider-text text-center">
+                            <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+                            <h1 class="probootstrap-heading probootstrap-animate">Frequently Asked Questions</h1>
+                            <div class="probootstrap-animate probootstrap-sub-wrap">Our hotel will respond to your inquiries through the person in charge as soon as possible. We will inform you of your inquiry by email.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <div class="col-md-8">
+                <h2 class="mt0" style="color:#6b265a;">FAQ</h2>
+                <hr class="underhr" >
+                <script>
+                    function replyView(replyNum , totalCount){
+                        if($("#replyView"+replyNum).css("display") == "none"){
+                            $("#replyView"+replyNum).attr("style","display:");
+                        }else{
+                            $("#replyView"+replyNum).attr("style","display: none");
+                        }
+                    }
+                </script>
+                <div class="faqList">
+                    <ul>
+                        <li class="first">
+                            <a href="javascript:replyView('1','14');" class="fTit">
+                                <span class="cate">Login</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                      &nbsp; I can't log in.
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView1">
+                                <em class="icoA">A.</em>
+                                <p>Login after receiving a temporary password as "Find Password" in the login window</p>
+                                <p>If you don't know the membership number, you can search through "Find the Shilla Word Number or ID".</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('2','14');" class="fTit">
+                                <span class="cate">Login</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How can I modify my membership information?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView2">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('3','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How do I book accommodation?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView3">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('4','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How do I know that my reservation is confirmed?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView4">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('5','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; Can I book your services by telephone, e-mail or fax?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView5">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('6','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; I made a reservation but did not receive any confirmation. What should I do?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView6">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('7','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How many rooms can I book at once?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView7">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('8','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; Is it secure to send my credit card details?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView8">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('9','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How do I pay for our accommodation?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView9">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('10','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; Can I make a reservation without a credit card?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView10">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('11','14');" class="fTit">
+                                <span class="cate">Booking</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How do I cancel my booking?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView11">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('12','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; Do you charge any fees for your services?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView12">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('13','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; How do I get to know which facilities / services each hotel offers?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView13">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('14','14');" class="fTit">
+                                <span class="cate">Etc</span>
+                                <h3 class="tit">
+                                    <em class="icoQ">Q.</em>
+                                    &nbsp; Is it possible to order an extra bed/baby cot and how much will it be?
+                                </h3>
+                            </a>
+                            <div style="display: none;" class="msg" id="replyView14">
+                                <em class="icoA">A.</em>
+                                <p>You can change the member's personal information in 'Propil Modify' on My Page after logging in to the website.</p>
+                                <p>However, you can modify the membership name and address through the membership center.</p>
+                                <p>Please call the Membership Center to request a change or forward the change to the inquiry.</p>
+                                <p>Thank you.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class ="lnbMenu">
+                <h2 class="tit">Help</h2>
+                <hr class="underhr" >
+                <ul class="menu">
+                    <li class="m1 first">
+                        <a href="/help">
+                            <span>Customer Inquery</span>
+                        </a>
+                    </li>
+                    </p>
+                    <li class="m1 last">
+                        <a href="/faq" class="on">
+                            <span>FAQ</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-half">
+    <div class="image" style="background-image: url(img/slider_2.jpg);"></div>
+    <div class="text">
+        <div class="probootstrap-animate fadeInUp probootstrap-animated">
+            <h2 class="mt0">Best 5 Star hotel</h2>
+            <p><img src="img/curve_white.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                </div>
+            </div>
+            <p><a href="#" class="link-with-icon white">Learn More <i class=" icon-chevron-right"></i></a></p>
+        </div>
+    </div>
+</section>
+
+
+<% include footer.ejs %>
+
+<script src="js/scripts.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>

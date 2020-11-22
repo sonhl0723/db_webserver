@@ -301,7 +301,7 @@ CREATE TABLE QNA
     `CREATE_DATE`  DATETIME       NOT NULL    COMMENT '작성날짜', 
     `IS_COMPLETE`  BOOLEAN           NULL        COMMENT '답변여부', 
     `ANSWER`       TEXT           NULL        COMMENT '답변', 
-    `ANSWER_DATE`  DATETIME       NULL        COMMENT '답변일', 
+    `ANSWER_DATE`  DATETIME       NULL        COMMENT '답변일',
     PRIMARY KEY (QNA_ID)
 );
 

@@ -12,7 +12,11 @@ var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users');
 var reservRouter = require('./routes/reservation');
 var registerRouter = require('./routes/register');
+var logoutRouter = require('./routes/logout');
+var helpRouter = require('./routes/help');
+var faqRouter = require('./routes/faq');
 var reviewRouter = require('./routes/review');
+
 
 var app = express();
 
@@ -20,17 +24,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser()); // 쿠키쿠키쿠키이용
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/logout', logoutRouter);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/reservation',reservRouter);
 app.use('/register',registerRouter);
+app.use('/help', helpRouter);
+app.use('/faq', faqRouter);
 app.use('/review',reviewRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,6 +48,9 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
+
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -48,5 +59,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;

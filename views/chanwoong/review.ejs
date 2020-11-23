@@ -40,94 +40,77 @@
 
 <section class="probootstrap-section" style="padding-top: 0px; padding-bottom: 10px;">
     <h2 style="text-align: left; margin-left: 10%;">Review</h2>
-    <form method="post" action="/#" class="probootstrap-form">
-        <div class="row">
-            <div class="col-sm-4 form-group" style="margin-left:10%; margin-bottom:-3%">
-                <input type="text" name='content_title' placeholder="Title" class="form-control">
+    <div class="container">
+        <button type="WRITE" class="btn btn-primary btn-lg" style="float: right;"data-toggle="collapse" href="#writing">WRITE</button>
+    </div>
+    <div id="writing" class="collapse">
+        <form method="post" action="/#" class="probootstrap-form">
+            <div class="row">
+                <div class="col-sm-4 form-group" style="margin-left:10%; margin-bottom:-3%">
+                    <input type="text" name='content_title' placeholder="Title" class="form-control">
+                </div>
+                <div id="writing" class="rating">
+                    <input type="radio" name="rating" value="5" id="5">
+                    <label for="5">☆</label>
+                    <input type="radio" name="rating" vaflue="4" id="4">
+                    <label for="4">☆</label>
+                    <input type="radio" name="rating" value="3" id="3">
+                    <label for="3">☆</label> 
+                    <input type="radio" name="rating" value="2" id="2">
+                    <label for="2">☆</label>
+                    <input type="radio" name="rating" value="1" id="1">
+                    <label for="1">☆</label>
+                </div>
             </div>
-            <div class="rating">
-                <input type="radio" name="rating" value="5" id="5">
-                <label for="5">☆</label>
-                <input type="radio" name="rating" vaflue="4" id="4">
-                <label for="4">☆</label>
-                <input type="radio" name="rating" value="3" id="3">
-                <label for="3">☆</label> 
-                <input type="radio" name="rating" value="2" id="2">
-                <label for="2">☆</label>
-                <input type="radio" name="rating" value="1" id="1">
-                <label for="1">☆</label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-9" style="margin-left:10%">
-                <textarea name='content' placeholder="리뷰 찌끄려봐라" rows="7" class="form-control"></textarea>
-            </div>
+            <div class="row">
+                <div class="col-sm-9" style="margin-left:10%">
+                    <textarea name='content' placeholder="리뷰 찌끄려봐라" rows="7" class="form-control"></textarea>
+                </div>
 
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-top: 7%;">
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-top: 7%;">
+                </div>
             </div>
-        </div>
-    </form>
-<<<<<<< HEAD
+        </form>
+    </div>
     <div class="container">
         <hr style="border: solid 0.5px">
+        <% for (var review of reviewData) { %>
         <div class="row">
             <div class="probootstrap-gutter40">
-                <div class="col-sm-3">
-                    <div class="review-block-name"><a href="#">TestCustomer</a></div>
-                    <div class="review-block-date">January 29, 2016</div>
-                    <div class="review-block-room">Suite-304</div>
-                    <div class="rating-selected">
-                        <div>★★★☆☆</div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="review-block-name"><a href="#"><%= review.LOGIN_ID %></a></div>
+                        <div class="review-block-date"><%= review.DATE %></div>
+                        <div class="review-block-room"><%= review.ROOM_TYPE %></div>
+                        <div class="rating-selected">
+                            <% var i = review.STAR_PORINT %>
+                            <%  if (i == 1) { %>
+                                    <div>★☆☆☆☆</div>
+                            <% } else if (i==2) { %>
+                                <div>★★☆☆☆</div>
+                            <% } else if (i==3) { %>
+                                <div>★★★☆☆</div>
+                            <% } else if (i==4) { %>
+                                <div>★★★★☆</div>
+                            <% } else { %>
+                                <div>★★★★★</div>
+                            <% } %>
+        <!--                    for문으로 짜니 계속 별이 줄띄움이 돼서 나와..-->
+
+
+                        </div>
                     </div>
-                </div>
+
                 <div class="col-sm-9">
-                    <div class="review-block-title">this was nice in buy</div>
-                    <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-                </div>
-=======
-
-
-    <hr style="border: solid 0.5px">
-    <% for (var review of reviewData) { %>
-    <div class="row">
-        <div class="probootstrap-gutter40">
-            <div class="col-sm-3">
-                <div class="review-block-name"><a href="#"><%= review.LOGIN_ID %></a></div>
-                <div class="review-block-date"><%= review.DATE %></div>
-                <div class="review-block-room"><%= review.ROOM_TYPE %></div>
-                <div class="rating-selected" style="margin-left: 30%;">
-                    <% var i = review.STAR_PORINT %>
-                    <%  if (i == 1) { %>
-                            <div>★☆☆☆☆</div>
-                    <% } else if (i==2) { %>
-                        <div>★★☆☆☆</div>
-                    <% } else if (i==3) { %>
-                        <div>★★★☆☆</div>
-                    <% } else if (i==4) { %>
-                        <div>★★★★☆</div>
-                    <% } else { %>
-                        <div>★★★★★</div>
-                    <% } %>
-<!--                    for문으로 짜니 계속 별이 줄띄움이 돼서 나와..-->
-
-
+                    <div class="review-block-title"><%= review.TITLE %></div>
+                    <div class="review-block-description"><%= review.CONTENT %></div>
                 </div>
             </div>
-            <div class="col-sm-9">
-                <div class="review-block-title"><%= review.TITLE %></div>
-                <div class="review-block-description"><%= review.CONTENT %></div>
->>>>>>> upstream/feature/review
-            </div>
-
         </div>
-        <hr/>
     </div>
-<<<<<<< HEAD
-=======
     <hr/>
     <% } %>
->>>>>>> upstream/feature/review
 </section>
 
 <section class="probootstrap-half">

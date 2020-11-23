@@ -40,15 +40,15 @@
 
 <section class="probootstrap-section" style="padding-top: 0px; padding-bottom: 10px;">
     <h2 style="text-align: left; margin-left: 10%;">Review</h2>
-    <form action="#" class="probootstrap-form">
+    <form method="post" action="/#" class="probootstrap-form">
         <div class="row">
             <div class="col-sm-4 form-group" style="margin-left:10%; margin-bottom:-3%">
-                <input type="text" placeholder="Title" class="form-control">
+                <input type="text" name='content_title' placeholder="Title" class="form-control">
             </div>
             <div class="rating">
                 <input type="radio" name="rating" value="5" id="5">
                 <label for="5">☆</label>
-                <input type="radio" name="rating" value="4" id="4">
+                <input type="radio" name="rating" vaflue="4" id="4">
                 <label for="4">☆</label>
                 <input type="radio" name="rating" value="3" id="3">
                 <label for="3">☆</label> 
@@ -60,7 +60,7 @@
         </div>
         <div class="row">
             <div class="col-sm-9" style="margin-left:10%">
-                <textarea placeholder="리뷰 찌끄려봐라" rows="7" class="form-control"></textarea>
+                <textarea name='content' placeholder="리뷰 찌끄려봐라" rows="7" class="form-control"></textarea>
             </div>
 
             <div class="form-group">
@@ -68,6 +68,7 @@
             </div>
         </div>
     </form>
+<<<<<<< HEAD
     <div class="container">
         <hr style="border: solid 0.5px">
         <div class="row">
@@ -84,10 +85,49 @@
                     <div class="review-block-title">this was nice in buy</div>
                     <div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
                 </div>
+=======
+
+
+    <hr style="border: solid 0.5px">
+    <% for (var review of reviewData) { %>
+    <div class="row">
+        <div class="probootstrap-gutter40">
+            <div class="col-sm-3">
+                <div class="review-block-name"><a href="#"><%= review.LOGIN_ID %></a></div>
+                <div class="review-block-date"><%= review.DATE %></div>
+                <div class="review-block-room"><%= review.ROOM_TYPE %></div>
+                <div class="rating-selected" style="margin-left: 30%;">
+                    <% var i = review.STAR_PORINT %>
+                    <%  if (i == 1) { %>
+                            <div>★☆☆☆☆</div>
+                    <% } else if (i==2) { %>
+                        <div>★★☆☆☆</div>
+                    <% } else if (i==3) { %>
+                        <div>★★★☆☆</div>
+                    <% } else if (i==4) { %>
+                        <div>★★★★☆</div>
+                    <% } else { %>
+                        <div>★★★★★</div>
+                    <% } %>
+<!--                    for문으로 짜니 계속 별이 줄띄움이 돼서 나와..-->
+
+
+                </div>
             </div>
+            <div class="col-sm-9">
+                <div class="review-block-title"><%= review.TITLE %></div>
+                <div class="review-block-description"><%= review.CONTENT %></div>
+>>>>>>> upstream/feature/review
+            </div>
+
         </div>
         <hr/>
     </div>
+<<<<<<< HEAD
+=======
+    <hr/>
+    <% } %>
+>>>>>>> upstream/feature/review
 </section>
 
 <section class="probootstrap-half">

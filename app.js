@@ -12,6 +12,7 @@ var loginRouter = require('./routes/login')
 var usersRouter = require('./routes/users');
 var reservRouter = require('./routes/reservation');
 var registerRouter = require('./routes/register');
+var complainRouter = require('./routes/complain');
 var logoutRouter = require('./routes/logout');
 var helpRouter = require('./routes/help');
 var faqRouter = require('./routes/faq');
@@ -38,6 +39,7 @@ app.use('/users', usersRouter);
 app.use('/login',loginRouter);
 app.use('/reservation',reservRouter);
 app.use('/register',registerRouter);
+app.use('/complain',complainRouter);
 app.use('/help', helpRouter);
 app.use('/faq', faqRouter);
 app.use('/review',reviewRouter);

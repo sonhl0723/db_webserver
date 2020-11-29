@@ -1,11 +1,19 @@
 var mysql      = require('mysql');
 
+// var db_config = {
+//   host     : '175.114.185.102',
+//   port     : '13333',
+//   user     : 'son',
+//   password : '1234',
+//   database : 'son'
+// };
+
 var db_config = {
-  host     : '175.114.185.102',
-  port     : '13333',
-  user     : 'son',
-  password : '1234',
-  database : 'son'
+    host : "us-cdbr-east-02.cleardb.com",
+    port : "3306",
+    user: "b0d7db5a46255f",
+    password: "e0ba2ce1",
+    database : "heroku_a9f9515c41ce864"
 };
 
 function handleDisconnect() {

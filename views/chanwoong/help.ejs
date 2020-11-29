@@ -14,6 +14,62 @@
     <script src="js/vendor/html5shiv.min.js"></script>
     <script src="js/vendor/respond.min.js"></script>
     <![endif]-->
+    <style>
+        #if{
+            width:0px;
+            height:0px;
+            border:0px;
+        }
+    </style>
+    <script language="javascript">
+        function validate() {
+            var title = document.getElementById("title");
+            var contents = document.getElementById("contents")
+            var name = document.getElementById("name");
+            var email = document.getElementById("email");
+            var phone = document.getElementById("phone");
+            var agree1 = document.getElementById("agree1");
+            var agree2 = document.getElementById("agree2");
+
+            if(title.value=="") {
+                alert("제목을 입력해 주세요.");
+                title.focus();
+                return false;
+            }
+
+            if(contents.value=="") {
+                alert("내용을 입력해 주세요.");
+                contents.focus();
+                return false;
+            }
+
+            if(name.value=="") {
+                alert("이름을 입력해 주세요.");
+                name.focus();
+                return false;
+            }
+
+            if(email.value=="") {
+                alert("이메일을 입력해 주세요.");
+                email.focus();
+                return false;
+            }
+
+            if(phone.value=="") {
+                alert("핸드폰 번호를 입력해 주세요.");
+                phone.focus();
+                return false;
+            }
+
+            if(!(agree1.checked)) {
+                alert("필수적 약관에 동의를 해주셔야합니다.");
+                document.gform.agree1.focus();
+                return false;
+            }
+
+            alert("고객님의 문의사항이 성공적으로 접수되었습니다.");
+        }
+    </script>
 </head>
 <body>
 
@@ -40,18 +96,18 @@
 <section class="probootstrap-section">
     <div class="container">
         <div class="row probootstrap-gutter40">
-            <form id="gform" method="POST" action="https://script.google.com/macros/s/AKfycbxj63IPDhClUPJzBPqiAuiVmARgMF1dtSir2xo-qg/exec">
+            <form name="gform" id="gform" method="POST" onsubmit="return validate();" target="param" action="https://script.google.com/macros/s/AKfycbxj63IPDhClUPJzBPqiAuiVmARgMF1dtSir2xo-qg/exec">
             <div class="col-md-8">
                 <h2 class="mt0" style="color:#6b265a;">Customer Inquery</h2>
                 <hr class="underhr" >
                 <table class="tableTypeA">
                     <tr>
                         <th><a style="color:red;">*</a> Title</th>
-                        <td><input type="text" name="title" style="width:60%"></td>
+                        <td><input type="text" name="title" id="title" style="width:60%"></td>
                     </tr>
                     <tr>
                         <th><a style="color:red;">*</a> Contents</th>
-                        <td><textarea name="contents" rows="15" style="width:100%"></textarea></td>
+                        <td><textarea name="contents" id="contents" rows="15" style="width:100%"></textarea></td>
                     </tr>
                     <tr>
                         <th><a style="color:red;">*</a> Name(Eng·Kor)</th>
@@ -61,16 +117,16 @@
                                 <option value="Mr.">Mr.</option>
                                 <option value="Dr.">Dr.</option>
                             </select>
-                            <input type="text" name="name">
+                            <input type="text" name="name" id="name">
                         </td>
                     </tr>
                     <tr>
                         <th><a style="color:red;">*</a> Email</th>
-                        <td><input type="text" name="email" style="width:60%"></td>
+                        <td><input type="text" name="email" id="email" style="width:60%"></td>
                     </tr>
                     <tr>
                         <th><a style="color:red;">*</a> Phone Number</th>
-                        <td><input type="text" name="phone"></td>
+                        <td><input type="text" name="phone" id="phone"></td>
                     </tr>
                 </table>
                 <div class="form-group">
@@ -83,7 +139,7 @@ Matters concerning the collection and use of essential personal information;
 ③  retention and use period | 5 years from the date of consent for collection and use
 ※ You may refuse to agree to the above matters, but if you do not agree to do so, you may not be able to proceed with all the procedures related to the inquiry and service provision.
                     </textarea><br>
-                    <input type="checkbox" name="agree" value="agree"> Agree<br>
+                    <input type="checkbox" name="agree1" id="agree1" value="agree"> Agree<br>
                 </div>
                 <div class="form-group">
                     <label>Consent to Optional Personal Information Collection and Utilization</label>
@@ -95,13 +151,14 @@ Matters concerning the collection and use of selective personal information;
 ③  retention and use period | 5 years from the date of consent for collection and use
 ※ You may refuse to agree to the above matters, but if you do not agree to do so, it may be impossible to proceed with general telephone guidance related to the inquiry and service provision.
                     </textarea><br>
-                    <input type="checkbox" name="agree" value="agree"> Agree<br>
+                    <input type="checkbox" name="agree2" id="agree2" value="agree"> Agree<br>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="submit">
                 </div>
             </div>
             </form>
+            <iframe id="if" name="param"></iframe>
             <div class ="lnbMenu">
                 <h2 class="tit">Help</h2>
                 <hr class="underhr" >
@@ -200,6 +257,7 @@ Matters concerning the collection and use of selective personal information;
         </div>
     </div>
 </section>
+
 
 <% include footer.ejs %>
 

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Database - Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text:300,400,700|Rubik:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/css/help-table.css">
+    <link rel="stylesheet" href="/stylesheets/css2/styles-merged.css">
+    <link rel="stylesheet" href="/stylesheets/css2/style.min.css">
+    <link rel="stylesheet" href="/stylesheets/css2/custom.css">
+    <!--[if lt IE 9]>
+    <script src="js/vendor/html5shiv.min.js"></script>
+    <script src="js/vendor/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<% include uppermenu_header.ejs %>
+
+<section class="probootstrap-slider flexslider probootstrap-inner">
+    <ul class="slides">
+        <li style="background-image: url(img/slider_1.jpg);" class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="probootstrap-slider-text text-center">
+                            <p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+                            <h1 class="probootstrap-heading probootstrap-animate">The Procedure for Booking</h1>
+                            <div class="probootstrap-animate probootstrap-sub-wrap">Please enter your valuable information for the reservation.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="probootstrap-section">
+    <div class="container">
+        <div class="row probootstrap-gutter40">
+            <h2 class="mt0" style="color:#6b265a;">Booking Form</h2>
+            <hr class="underhr" >
+            <form action="#" method="post" class="probootstrap-form">
+                <label><h3>Customer Information</h3></label>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Korean First Name</label>
+                        <input type="text" name = "korean_first" placeholder="Enter First Name Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Korean Last Name</label>
+                        <input type="text" name="korean_last" placeholder="Enter Last Name Here.." class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>English First Name</label>
+                        <input type="text" name="english_first" placeholder="Enter First Name Here.." class="form-control">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>English Last Name</label>
+                        <input type="text" name="english_last" placeholder="Enter Last Name Here.." class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <div class="form-field">
+                        <i class="icon icon-mail"></i>
+                        <input type="email" name="email" placeholder="Enter Email Here.." class="form-control" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="text" name="phone_num" placeholder="Enter Phone Number Here.." class="form-control">
+                </div>
+
+                <div class="row">
+                    <!-- 룸 타입의 경우 전 페이지에서 값을 받아와서 고정시킨다. -->
+                    <div class="col-sm-6 form-group">
+                        <label>Room Type</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="room" id="room" class="form-control">
+                                <option value="">Room Type</option>
+                                <option value="1">STANDARD_TWIN</option>
+                                <option value="2">STANDARD_DOUBLE</option>
+                                <option value="3">STANDARD_FAMILY</option>
+                                <option value="4">DELUXE_TWIN</option>
+                                <option value="5">DELUXE_DOUBLE</option>
+                                <option value="6">DELUXE_FAMILY</option>
+                                <option value="7">PREMIUM_TWIN</option>
+                                <option value="8">PREMIUM_DOUBLE</option>
+                                <option value="9">SUITE</option>
+                                <option value="10">EXECUTIVE_SUITE</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- 고정시킨 룸타입을 토대로 기본 성인 인원을 고정시킨다.-->
+                    <div class="col-sm-6 form-group">
+                        <label for="adults">The Default Capacity</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="adults" id="adults" class="form-control">
+                                <option value="">The Default Number of People</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="middlehr" >
+                <label><h3>Credit Card Information</h3></label>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>Credit Card Type</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="cardtype" id="cardtype" class="form-control">
+                                <option value="">Select Credit Card Type</option>
+                                <option value="1">AMEX CARD</option>
+                                <option value="2">BC CARD</option>
+                                <option value="3">CITIBANK CARD</option>
+                                <option value="4">DINERS CARD</option>
+                                <option value="5">HYUNDAI CARD</option>
+                                <option value="6">JCB CARD</option>
+                                <option value="7">KEB CARD</option>
+                                <option value="8">KOOKMIN CARD</option>
+                                <option value="9">LOTTE CARD</option>
+                                <option value="10">MASTER OVERSEAS</option>
+                                <option value="11">SHINHAN CARD</option>
+                                <option value="12">SAMSUNG CARD</option>
+                                <option value="13">VISA OVERSEAS</option>
+                                <option value="14">UNION PAY</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>Card Validity</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="month" id="month" class="form-control">
+                                <option value="">월</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                                <option value="3">03</option>
+                                <option value="4">04</option>
+                                <option value="5">05</option>
+                                <option value="6">06</option>
+                                <option value="7">07</option>
+                                <option value="8">08</option>
+                                <option value="9">09</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 form-group">
+                        <label>.</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="year" id="year" class="form-control">
+                                <option value="">년</option>
+                                <option value="1">2020</option>
+                                <option value="2">2021</option>
+                                <option value="3">2022</option>
+                                <option value="4">2023</option>
+                                <option value="5">2024</option>
+                                <option value="6">2025</option>
+                                <option value="7">2026</option>
+                                <option value="8">2027</option>
+                                <option value="9">2028</option>
+                                <option value="10">2029</option>
+                                <option value="11">2030</option>
+                                <option value="12">2031</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <label>Credit Card Number</label>
+                <div class="row">
+                    <div class="col-sm-2 form-group">
+                        <input type="text" name = "credit1" class="form-control">
+                    </div>
+                    <div class="middlebar">
+                        <h3>-</h3>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <input type="text" name = "credit2" class="form-control">
+                    </div>
+                    <div class="middlebar">
+                        <h3>-</h3>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <input type="text" name = "credit3" class="form-control">
+                    </div>
+                    <div class="middlebar">
+                        <h3>-</h3>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <input type="text" name = "credit4" class="form-control">
+                    </div>
+                </div>
+                <hr class="middlehr" >
+                <label><h3>Optional</h3></label>
+                <div class="row">
+                    <!-- 추가 인원들 -->
+                    <div class="col-sm-6 form-group">
+                        <label for="adults">Additional Adults/$5000</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="adults" id="adults" class="form-control">
+                                <option value="">Number of Adults</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="children">Additional Children/$2500</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="children" id="children" class="form-control">
+                                <option value="">Number of Children</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- 조식 티켓 -->
+                    <div class="col-sm-6 form-group">
+                        <label>Adults Breakfast/$2500</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="adults" id="adults" class="form-control">
+                                <option value="">Number of Adults Breakfast</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label>Children Breakfast/$1250</label>
+                        <div class="form-field">
+                            <i class="icon icon-chevron-down"></i>
+                            <select name="children" id="children" class="form-control">
+                                <option value="">Number of Children Breakfast</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr class="middlehr" >
+                <script>
+                    function replyView(replyNum , totalCount){
+                        if($("#replyView"+replyNum).css("display") == "none"){
+                            $("#replyView"+replyNum).attr("style","display:");
+                        }else{
+                            $("#replyView"+replyNum).attr("style","display: none");
+                        }
+                    }
+                </script>
+                <div class="faqList">
+                    <ul>
+                        <li class="first">
+                            <a href="javascript:replyView('1','2');" class="fTit">
+                                <span class="precaution">Precaution</span>
+                            </a>
+                            <div style="display: none;" class="msg2" id="replyView1">
+                                <p>Please make sure to present your ID card with your photo when checking in to fill out the registration card and to confirm your identity.</p>
+                                <p>Children under the age of 13 are not charged extra for room use.</p>
+                                <p>Breakfast is free for infants under 37 months old.</p>
+                                <p>Except for guide dogs, pets and other animals are not allowed.Minors who are not accompanied by their parents are not allowed to stay. (Article 30/58 of the Juvenile Protection Act)</p>
+                                <p>The above fee is a discount, and the double discount does not apply.</p>
+                                <p>Please contact us at 02-2530-2723.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:replyView('2','2');" class="fTit">
+                                <span class="precaution">Cancellation and Refund and Cancellation</span>
+                            </a>
+                            <div style="display: none;" class="msg2" id="replyView2">
+                                <p>Cancellation can be made 1 day before the scheduled date of stay at 18:00 without penalty.</p>
+                                <p>Cancellation or change after the above period (including No Show)</p>
+                                <p>- peak season (4,5,6,10,11), 12/24, 12/31) : 80% of the first one-night rate charged</p>
+                                <p>- Off-season (out-of-season): 10% of the first one-night rate.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <label>Agreement on the collection and utilization of essential personal information</label>
+                    <textarea readonly="readonly" rows="3" style="padding : 15px; width:100%;">Regarding customer inquiries and opinions, we agree to collect and use your personal information as shown below.
+
+Matters concerning the collection and use of essential personal information;
+①  Collection and use items | Name (English and Korean), e-mail, mobile phone
+②  Purpose of Collection and Use | Providing guidance and services for inquiries
+③  retention and use period | 5 years from the date of consent for collection and use
+※ You may refuse to agree to the above matters, but if you do not agree to do so, you may not be able to proceed with all the procedures related to the inquiry and service provision.
+                    </textarea><br>
+                    <input type="checkbox" name="agree1" id="agree1" value="agree"> Agree<br>
+                </div>
+                <div class="form-group">
+                    <label>Consent to Optional Personal Information Collection and Utilization</label>
+                    <textarea readonly="readonly" rows="3" style="padding : 15px; width:100%;">Regarding customer inquiries and opinions, we agree to collect and use your personal information as shown below.
+
+Matters concerning the collection and use of selective personal information;
+①  Collection and Use Item | Home Phone
+②  Purpose of Collection and Use | Providing guidance and services for inquiries
+③  retention and use period | 5 years from the date of consent for collection and use
+※ You may refuse to agree to the above matters, but if you do not agree to do so, it may be impossible to proceed with general telephone guidance related to the inquiry and service provision.
+                    </textarea><br>
+                    <input type="checkbox" name="agree2" id="agree2" value="agree"> Agree<br>
+                </div>
+                <div class="form-group">
+                    <input type="submit" style="float:right" class="btn btn-primary btn-lg" id="submit" name="submit" value="Reserve">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="probootstrap-half">
+    <div class="image" style="background-image: url(img/slider_2.jpg);"></div>
+    <div class="text">
+        <div class="probootstrap-animate fadeInUp probootstrap-animated">
+            <h2 class="mt0">Best 5 Star hotel</h2>
+            <p><img src="img/curve_white.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                </div>
+            </div>
+            <p><a href="#" class="link-with-icon white">Learn More <i class=" icon-chevron-right"></i></a></p>
+        </div>
+    </div>
+</section>
+
+
+<% include footer.ejs %>
+
+<script src="js/scripts.min.js"></script>
+<script src="js/main.min.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
